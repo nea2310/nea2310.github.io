@@ -222,6 +222,41 @@ h2,
   margin: 0 -15px;
 }
 
+.faq {
+  padding: 30px;
+  max-width: 600px;
+}
+
+.faq .item {
+  margin: 20px 0;
+}
+
+.faq .item .ask {
+  font-size: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.faq .item .answer {
+  background: #cbd1cb;
+  overflow: hidden;
+  display: none;
+  padding: 0 15px;
+}
+
+.ask:after {
+  content: "\f103";
+  font-family: FontAwesome;
+  margin-left: 15px;
+}
+
+.link:before {
+  content: "\f105";
+  font-family: FontAwesome;
+  margin-left: 5px;
+  padding-right: 10px;
+}
+
 *,
 *:before,
 *:after {
