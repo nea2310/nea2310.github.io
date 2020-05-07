@@ -257,6 +257,10 @@ h2,
   padding-right: 10px;
 }
 
+a {
+  text-decoration: none;
+}
+
 *,
 *:before,
 *:after {
