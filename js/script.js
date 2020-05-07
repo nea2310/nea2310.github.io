@@ -1,8 +1,11 @@
-/*$(window).resize(function(){
-	if($(window).width() > 576) $('.menu').removeAttr('style')
-	});	
+$(function(){
+	let answers = $('.answer');
 
-});*/
+	$('.ask').on('click', function(){
+		let current = $(this).nextAll('.answer').slideToggle(500);
+		answers.not(current).slideUp(500);
+	});
+});
 
 
 $(document).ready(function(){
