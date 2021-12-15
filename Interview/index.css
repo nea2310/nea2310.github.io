@@ -1,0 +1,96 @@
+.content-table {
+	border-collapse: collapse;
+}
+.content-table th {
+	border: 1px solid rgb(65, 174, 224);
+}
+.content-table td {
+	border: 1px solid rgb(65, 174, 224);
+}
+
+section {
+	display: flex;
+	align-items: center;
+}
+pre {
+	background-color: rgb(240, 220, 194);
+}
+caption {
+	text-align: left;
+}
+
+#col1 {
+	width: 80px;
+	background-color: green;
+}
+
+#col2 {
+	width: 100px;
+	background-color: purple;
+}
+
+#col3 {
+	width: 150px;
+	background-color: fuchsia;
+}
+
+#col4 {
+	width: 150px;
+	background-color: blue;
+}
+
+#col5 {
+	width: 50px;
+	background-color: orange;
+}
+
+#table2 {
+	border-collapse: collapse;
+}
+
+#table2 td {
+	border: 2px solid black;
+}
+#table2 th {
+	border: 2px solid black;
+}
+
+#table2 #td1 {
+	background-color: rgb(238, 126, 22);
+}
+
+#table2 #r1-с1 {
+	background-color: rebeccapurple;
+}
+
+#table2 #th1 {
+	background-color: rgb(248, 52, 127);
+}
+
+#table3 {
+	border: 1px solid rgb(93, 177, 226);
+	border-spacing: 5px;
+	table-layout: fixed;
+	width: 500px;
+}
+
+#table3 th,
+#table3 td {
+	border: 1px solid rgb(93, 177, 226);
+}
+
+#table4 {
+	border: 1px solid rgb(93, 177, 226);
+	border-spacing: 5px;
+	table-layout: auto;
+	width: 500px;
+}
+#table4 th,
+#table4 td {
+	border: 1px solid rgb(93, 177, 226);
+}
+
+#table5 th,
+#table5 td {
+	border: 1px solid rgb(93, 177, 226);
+}

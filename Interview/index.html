@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<script defer src="./main.js"></script>
+	<link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+	<h1>HTML</h1>
+	<h2>Таблицы</h2>
+	<h3>Как создавать таблицы в html?</h3>
+	<p>
+		Общая информация по таблицам.
+		Табличные данные относятся к категории потокового содержимого, они используются в основной части документов и
+		приложений.
+		В таблицах есть строки, столбцы и ячейки. Строки и столбцы образуют сетку. Ячейки таблицы должны полностью
+		заполнять эту сетку без перекрытия.
+		Таблицы нельзя использовать в качестве вспомогательных средств разметки. Исторически сложилось так, что некоторые
+		веб-авторы неправильно использовали таблицы в HTML как способ управления макетом своих страниц. Это использование
+		не соответствует требованиям, поскольку инструменты, пытающиеся извлечь данные из таких документов, могут получить
+		запутанные результаты. В частности, программам чтения с экрана будет сложно перемещаться по страницам с таблицами,
+		используемыми для разметки.
+		Если таблица все же должна использоваться для разметки страницы, ее необходимо пометить атрибутом
+		role=&quotpresentation&quot, чтобы браузер правильно представлял таблицу программам чтения с экрана.</p>
+	<p>Теги для создания таблиц:</p>
+	<p>&lttable&gt - таблица</p>
+	<p>&ltcaption&gt - подпись таблицы
+	<p> &ltcolgroup&gt - Элемент &ltcolgroup&gt и его атрибут span участвует в макете таблицы, представляя группу из
+		одного или нескольких столбцов.
+		<i>Примечание: Элемент &ltcolgroup&gt должен использоваться внутри элемента &lttable&gt сразу после элемента
+			&ltcaption&gt перед элементами &ltthead&gt, &lttbody&gt, &lttfoot&gt и &lttr&gt.</i>
+	</p>
+	<p> &ltcol&gt - Элемент &ltcol&gt и его атрибут span участвует в макете таблицы, представляя один или несколько
+		столбцов в группе столбцов, представленных элементом &ltcolgroup&gt.</p>
+	<p> &lttbody&gt основные данные таблицы.</p>
+	<p> &ltthead&gt - блок строк, состоящий из заголовков столбцов таблицы.</p>
+	<p> &lttfoot&gt - нижние колонтитулы.</p>
+	<p> &lttr&gt - строка</p>
+	<p> &lttd&gt - ячейка</p>
+
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th>Атрибут &lttd&gt</th>
+				<th>Описание, принимаемое значение</th>
+			</tr>
+			<tr>
+				<td>colspan</td>
+				<td>Задает количество строк, которые должна объединять ячейка.
+					Синтаксис: colspan=&quot2&quot</td>
+			</tr>
+			<tr>
+				<td>rowspan</td>
+				<td>Задает количество столбцов, которые должна объединять ячейка.
+					Синтаксис: rowspan=&quot2&quot</td>
+			</tr>
+			<tr>
+				<td>headers</td>
+				<td>Задает список строк, разделенных пробелами,
+					каждая из которых соответствует атрибуту id элементов &ltth&gt, которые связаны с этим элементом.
+					Синтаксис: headers=&quot2&quot</td>
+			</tr>
+		</thead>
+	</table>
+
+	<p>
+		Тег &ltth&gt предназначен для создания одной ячейки таблицы, которая обозначается как заголовочная.
+		Текст в такой ячейке отображается браузером обычно жирным шрифтом и выравнивается по центру.
+		Тег &ltth&gt должен размещаться внутри контейнера &lttr&gt, который в свою очередь располагается внутри тега
+		&lttable&gt.
+	</p>
+
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th>Атрибут &lttd&gt</th>
+				<th>Описание, принимаемое значение</th>
+			</tr>
+			<tr>
+				<td>colspan</td>
+				<td>Задает количество строк, которые должна объединять ячейка.
+					Синтаксис: colspan=&quot2&quot</td>
+			</tr>
+			<tr>
+				<td>rowspan</td>
+				<td>Задает количество столбцов, которые должна объединять ячейка.
+					Синтаксис: rowspan=&quot2&quot</td>
+			</tr>
+			<tr>
+				<td>headers</td>
+				<td>Задает список строк, разделенных пробелами,
+					каждая из которых соответствует атрибуту id элементов &ltth&gt, которые связаны с этим элементом.
+					Синтаксис: headers=&quot2&quot</td>
+			</tr>
+
+			<tr>
+				<td>scope</td>
+				<td>Определяет ячейки, к которым относится заголовок, определенный в элементе &ltth&gt.
+					Разрешенные значения:
+					row — заголовок относится ко всем ячейкам строки, к которой он принадлежит.
+					col — заголовок относится ко всем ячейкам столбца, которому он принадлежит.
+					rowgroup — заголовок принадлежит группе строк и относится ко всем ее ячейкам. Эти ячейки могут быть
+					размещены справа или слева от заголовка, в зависимости от значения атрибута dir элемента &lttable&gt.
+					colgroup — заголовок принадлежит &ltcolgroup&gt и относится ко всем ее ячейкам.
+					Синтаксис: scope=&quotrowgroup&quot
+				</td>
+			</tr>
+
+			<tr>
+				<td>abbr</td>
+				<td>Задает альтернативное сокращенное описание содержимого ячейки. Программы для чтения речи могут
+					представлять это описание перед самим контентом.
+					Синтаксис: abbr=&quotTypes&quot</td>
+			</tr>
+		</thead>
+	</table>
+	<h3> border-spacing, border-collapse</h3>
+	С помощью свойства <b>border-spacing</b> можно менять расстояние между рамками ячеек. Данное свойство применяется к
+	таблице в целом.
+	Рамки ячеек таблицы по умолчанию разделены небольшим промежутком. Если задать для таблицы<b> border-collapse:
+		collapse</b>, то промежуток уберётся
+
+	<h3>colspan, rowspan</h3>
+	Это атрибуты ячеек (т.е. тегов &lttd&gt и &ltth&gt).
+	Colspan задает, сколько столбцов объединяет ячейка, а rowspan – сколько строк
+
+
+	<h3>table-layout</h3>
+	<p>Компоновка макета таблицы определяется одним из двух подходов: фиксированный макет или автоматический макет. Под
+		компоновкой в данном случае подразумевается, как распределяется ширина таблицы между шириной ячеек.
+		Свойство не наследуется.
+	</p>
+
+
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th colspan="2">table-layout</th>
+			</tr>
+			<tr>
+				<td>auto</td>
+				<td>Значение по умолчанию. Ширина макета таблицы определяется шириной её содержимого
+					с учетом значений свойств <b>padding-left</b>, <b>padding-right</b>, <b>border-left width</b> плюс одна
+					ширина <b>border-right</b> последней ячейки в ряду,
+					или заданной шириной ячеек и толщиной рамки. Если ширина ячеек не задана явно, они могут быть разной
+					ширины.</td>
+			</tr>
+			<tr>
+				<td>fixed</td>
+				<td>Ширина колонок в этом случае определяется либо с помощью тега &ltcol&gt,
+					либо вычисляется на основе первой строки. Если данные о форматировании первой строки
+					таблицы по каким-либо причинам получить невозможно, в этом случае таблица делится
+					на колонки равной ширины. При использовании этого значения, содержимое, которое не
+					помещается в ячейку указанной ширины, будет «обрезано» либо наложено поверх ячейки.
+					Это зависит от используемого браузера, но в любом случае ширина ячейки меняться не будет.
+					Для корректной работы этого значения обязательно должна быть задана ширина таблицы.</td>
+			</tr>
+		</thead>
+	</table>
+
+	<h3>caption</h3>
+
+	&ltcaption&gt - подпись таблицы
+	Если элемент &lttable&gt является единственным содержимым в элементе &ltfigure&gt, кроме &ltfigcaption&gt,
+	элемент &ltcaption&gt следует опустить в пользу &ltfigcaption&gt.
+
+	<h3>headers & scope</h3>
+
+	<p>Атрибут <b>headers</b> позволяет связать ячейки таблицы с заголовками. Этот атрибут предназначен для повышения
+		доступности таблицы пользователям речевых браузеров, в обычных браузерах результат применения атрибута
+		<b>headers</b> не заметен.
+	</p>
+	<p>Для связывания ячеек между собой одной ячейке в теге <td> или
+		<th> задается атрибут <b>id</b>, а второй ячейке — атрибут <b>headers</b> со значением, совпадающим со значением
+			<b>id</b>.
+	</p>
+	<p>Синтаксис
+	<p>&lttd id="идентификатор"&gt...&lt /td&gt </p>
+	<p>&lt td headers="идентификатор"&gt...&lt /td&gt </p>
+
+	<p>Атрибут <b>scope</b> связывает между собой ячейки с заголовком и обычные ячейки. По своему действию напоминает
+		атрибут <b>headers</b>, но используется для простых таблиц. Атрибут предназначен для экранных ридеров вроде
+		речевых браузеров, в обычных браузерах результат добавления <b>scope</b> никак не заметен. </p>
+	<p>Синтаксис</p>
+	<p>&lt td scope="col | colgroup | row | rowgroup">...&lt /td&gt </p>
+	<p>Значения</p>
+	<p><b>col</b> - >Ячейка заголовка установлена для колонки. </p>
+	<p><b>colgroup</b> - Ячейка заголовка установлена для группы колонок. </p>
+	<p><b>row</b> - Ячейка заголовка задана для строки. </p>
+	<p><b>rowgroup</b> - Ячейка заголовка установлена для группы строк. </p>
+
+	<h3>display: table, table-cell, table-row и т.д.</h3>
+	<p>Используется для задания не специализированному табличному тегу (например &ltdiv&gt) поведения,
+		аналогичного тегам &lttable&gt, &lttr&gt, &lttd&gt и т.д.</p>
+
+	<table class="content-table">
+		<thead>
+			<tr>
+				<th colspan="2">Значение свойства Display</th>
+			</tr>
+			<tr>
+				<td>table</td>
+				<td>Элемент генерирует структурный блок. На странице ведет себя аналогично &lttable&gt.</td>
+			</tr>
+			<tr>
+				<td>table-caption</td>
+				<td>Элемент генерирует основной заголовок таблицы. На странице ведет себя аналогично &ltcaption&gt.</td>
+			</tr>
+			<tr>
+				<td>table-column</td>
+				<td>Элемент описывает столбец ячеек, визуальное представление не генерируется. Аналог — &ltcol&gt.</td>
+			</tr>
+			<tr>
+				<td>table-column-group</td>
+				<td>Элемент объединяет один или несколько столбцов. Аналог — &lt colgroup&gt.</td>
+			</tr>
+			<tr>
+				<td>table-cell</td>
+				<td>Элемент генерирует отдельную ячейку таблицы, на странице ведет себя аналогично &lt th&gt и &lt td&gt.
+				</td>
+			</tr>
+			<tr>
+				<td>table-header-group</td>
+				<td>Элемент определяет группу строк заголовка, которая всегда отображается перед остальными строками и
+					группами строк. Аналог — &lt thead&gt.</td>
+			</tr>
+			<tr>
+				<td>table-footer-group</td>
+				<td>Элемент определяет группу строк заголовка, которая всегда отображается после всех остальных строк и
+					перед любым нижним основным заголовком. Ведет себя аналогично &lt tfoot>.</td>
+			</tr>
+			<tr>
+				<td>table-row-group</td>
+				<td>Элемент объединяет одну или несколько строк. Аналог — &lt tbody&gt</td>
+			</tr>
+			<tr>
+				<td>table-row</td>
+				<td>Элемент является строкой ячеек. Пример — &lt tr&gt.</td>
+			</tr>
+		</thead>
+	</table>
+
+
+	<h3>Примеры верстки</h3>
+
+	<br>
+	<section>
+		<table id="table5">
+			<caption><b>Использованы атрибуты headers и scope</b></caption>
+			<thead>
+				<tr>
+					<th id="TH10" scope="col">заголовок первой колонки</th>
+					<th id="TH20" scope="col">заголовок второй колонки</th>
+					<th id="TH30" scope="col">заголовок третьей колонки</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td headers="TH10">TD внутри TBODY 1</td>
+					<td headers="TH20">TD внутри TBODY 2</td>
+					<td headers="TH30">TD внутри TBODY 3</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th scope="row">TH внутри TFOOT</th>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+				</tr>
+			</tfoot>
+		</table>
+		<pre>
+		<code>
+			&lttable id=&quottable5&quot&gt
+			&ltcaption&gt&ltb&gtTABLE 5&lt/b&gt&lt/caption&gt
+		
+			&ltthead&gt
+				&lttr&gt
+					&ltth&gt id=&quotTH10&quot scope=&quotcol&quot&gtзаголовок первой колонки&lt/th&gt
+					&ltth&gt id=&quotTH20&quot scope=&quotcol&quot&gtзаголовок второй колонки&lt/th&gt
+					&ltth&gt id=&quotTH30&quot scope=&quotcol&quot&gtзаголовок третьей колонки&lt/th&gt
+				&lt/tr&gt
+			&lt/thead&gt
+			&lttbody&gt
+		
+				&lttr&gt
+					&lttd&gt <b>headers=&quotTH10&quot</b>&gtTD внутри TBODY 1&lt/td&gt
+					&lttd&gt <b>headers=&quotTH20&quot</b>&gtTD внутри TBODY 2&lt/td&gt
+					&lttd&gt <b>headers=&quotTH30&quot</b>&gtTD внутри TBODY 3&lt/td&gt
+				&lt/tr&gt
+		
+			&lt/tbody&gt
+			&lttfoot&gt
+				&lttr&gt
+					&ltth&gt <b>scope=&quotrow&quot</b>&gtTH внутри TFOOT&lt/th&gt
+					&lttd&gtTD внутри TFOOT&lt/td&gt
+					&lttd&gtTD внутри TFOOT&lt/td&gt
+					&lttd&gtTD внутри TFOOT&lt/td&gt
+				&lt/tr&gt
+			&lt/tfoot&gt
+		&lt/table&gt
+		</code>
+	</pre>
+	</section>
+	<br>
+	<section>
+		<table rules='groups'>
+			<colgroup>
+				<col id='col1' span=2>
+				<col id='col2' span=3>
+				<col id='col3' span=1>
+				<col id='col4' span=2>
+				<col id='col5' span=1>
+			</colgroup>
+			<caption><b>Таблице добавлен атрибут rules='groups'; использованы теги &ltcolgroup&gt и &ltcol&gt</b></caption>
+			<thead>
+				<tr>
+					<th id="n">TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td headers="n r1-с1">TD внутри TBODY 1</td>
+					<th id="r1-с1">TH внутри TBODY 2</th>
+					<td>TD внутри TBODY 3</td>
+					<td headers="n r1-с2">TD внутри TBODY 4</td>
+					<th id="r1-с2">TH внутри TBODY 5</th>
+					<td>TD внутри TBODY 6</td>
+					<td headers="n r1-с3">TD внутри TBODY 7</td>
+					<th id="r1-с3">TH внутри TBODY 8</th>
+					<td>TD внутри TBODY 9</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th scope="row">TH внутри TFOOT</th>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+				</tr>
+			</tfoot>
+		</table>
+		<pre>
+	<code>
+	<b>&lttable rules='groups'&gt</b>
+	<b>&ltcolgroup&gt
+			&ltcol id='col1' span=2&gt
+			&ltcol id='col2' span=3&gt
+			&ltcol id='col3' span=1&gt
+			&ltcol id='col4' span=2&gt
+			&ltcol id='col5' span=1&gt
+		&lt/colgroup&gt</b>
+
+		&ltcaption&gt&ltb&gtTABLE 1&lt/b&gt&lt/caption&gt
+
+		&ltthead&gt
+			&lttr&gt
+				&ltth id=&quotn&quot&gtTH внутри TR внутри THEAD&lt/th&gt
+				&ltth&gtTH внутри TR внутри THEAD&lt/th&gt
+				&ltth&gtTH внутри TR внутри THEAD&lt/th&gt
+			&lt/tr&gt
+		&lt/thead&gt
+		&lttbody&gt
+
+			&lttr&gt
+				&lttd headers=&quotn r1-с1&quot&gtTD внутри TBODY 1&lt/td&gt
+				&ltth id=&quotr1-с1&quot&gtTH внутри TBODY 2&lt/th&gt
+				&lttd&gtTD внутри TBODY 3&lt/td&gt
+
+				&lttd headers=&quotn r1-с2&quot&gtTD внутри TBODY 4&lt/td&gt
+				&ltth id=&quotr1-с2&quot&gtTH внутри TBODY 5&lt/th&gt
+				&lttd&gtTD внутри TBODY 6&lt/td&gt
+
+				&lttd headers=&quotn r1-с3&quot&gtTD внутри TBODY 7&lt/td&gt
+				&ltth id=&quotr1-с3&quot&gtTH внутри TBODY 8&lt/th&gt
+				&lttd&gtTD внутри TBODY 9&lt/td&gt
+			&lt/tr&gt
+		&lt/tbody&gt
+		&lttfoot&gt
+			&lttr&gt
+				&ltth scope=&quotrow&quot&gtTH внутри TFOOT&lt/th&gt
+				&lttd&gtTD внутри TFOOT&lt/td&gt
+				&lttd&gtTD внутри TFOOT&lt/td&gt
+				&lttd&gtTD внутри TFOOT&lt/td&gt
+			&lt/tr&gt
+		&lt/tfoot&gt
+	&lt/table&gt
+	</code>
+</pre>
+	</section>
+	<br>
+	<section>
+		<table id="table2">
+			<caption><b>Использованы атрибуты colspan и rowspan для ячеек, к таблице применено свойство border-collapse:
+					collapse;</b></caption>
+			<thead>
+				<tr>
+					<th id="n">TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+					<th colspan="3" id="th1">TH внутри TR внутри THEAD занимает три столбца</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td headers="n r1-с1" colspan="1" id="td1">TD внутри TBODY 1 занимает один столбец</td>
+					<th id="r1-с1" rowspan="3">TH внутри TBODY 2 занимает три строки</th>
+				</tr>
+				<tr>
+					<td headers="n r2">TD внутри TBODY 1</td>
+				</tr>
+				<tr>
+					<td>TD внутри TBODY 1</td>
+				</tr>
+				<tr>
+					<td>TD внутри TBODY 1</td>
+				</tr>
+			</tbody>
+		</table>
+		<pre>
+	<code>
+		&lttable id=&quottable2&quot&gt
+		&ltcaption&gt&ltb&gtTABLE 2&lt/b&gt&lt/caption&gt
+		&ltthead&gt
+			&lttr&gt
+				&ltth&gt id=&quotn&quot&gtTH внутри TR внутри THEAD&lt/th&gt
+				&ltth&gtTH внутри TR внутри THEAD&lt/th&gt
+				&ltth&gt <b>colspan=&quot3&quot</b> id=&quotth1&quot&gtTH внутри TR внутри THEAD занимает три столбца&lt/th&gt
+			&lt/tr&gt
+		&lt/thead&gt
+		&lttbody&gt
+			&lttr&gt
+				&lttd&gt headers=&quotn r1-с1&quot <b>colspan=&quot1&quot</b> id=&quottd1&quot&gtTD внутри TBODY 1 занимает один столбец&lt/td&gt
+				&ltth&gt id=&quotr1-с1&quot <b>rowspan=&quot3&quot</b>&gtTH внутри TBODY 2 занимает три строки&lt/th&gt
+			&lt/tr&gt
+			&lttr&gt
+				&lttd&gt headers=&quotn r2&quot&gtTD внутри TBODY 1&lt/td&gt
+			&lt/tr&gt
+			&lttr&gt
+				&lttd&gtTD внутри TBODY 1&lt/td&gt
+			&lt/tr&gt
+			&lttr&gt
+				&lttd&gtTD внутри TBODY 1&lt/td&gt
+			&lt/tr&gt
+		&lt/tbody&gt
+	&lt/table&gt
+	</code>
+</pre>
+	</section>
+	<br>
+	<section>
+		<table id="table3">
+			<caption><b>Применены свойства border-spacing: 5px; table-layout: fixed (колонки одинаковой ширины);</b>
+			</caption>
+			<thead>
+				<tr>
+					<th>TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>TD внутри TBODY 1</td>
+					<td>TD внутри TBODY 2</td>
+					<td>TD внутри TBODY 3</td>
+					<td>TD внутри TBODY 4</td>
+					<td>TD внутри TBODY 5</td>
+				</tr>
+				<tr>
+					<td>TD внутри TBODY 1</td>
+					<td>TD внутри TBODY 2</td>
+					<td>TD внутри TBODY 3</td>
+					<td>TD внутри TBODY 4</td>
+					<td>TD внутри TBODY 5 test test test test test test test test test test </td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th scope="row">TH внутри TFOOT</th>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+				</tr>
+			</tfoot>
+		</table>
+		<pre>
+			<code>
+				table {
+					border: 1px solid rgb(93, 177, 226);
+					border-spacing: 5px;
+					table-layout: fixed;
+					width: 500px;
+				}
+			</code>
+		</pre>
+	</section>
+	<br>
+	<section>
+		<table id="table4">
+			<caption><b>Применены свойства border-spacing: 5px; table-layout: auto; (колонки разной ширины,
+					которая зависит от
+					содержимого)</b></caption>
+			<thead>
+				<tr>
+					<th>TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+					<th>TH внутри TR внутри THEAD</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>TD внутри TBODY 1</td>
+					<td>TD внутри TBODY 2</td>
+					<td>TD внутри TBODY 3</td>
+					<td>TD внутри TBODY 4</td>
+					<td>TD внутри TBODY 5</td>
+				</tr>
+				<tr>
+					<td>TD внутри TBODY 1</td>
+					<td>TD внутри TBODY 2</td>
+					<td>TD внутри TBODY 3</td>
+					<td>TD внутри TBODY 4</td>
+					<td>TD внутри TBODY 5 test test test test test test test test test test </td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th scope="row">TH внутри TFOOT</th>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+					<td>TD внутри TFOOT</td>
+				</tr>
+			</tfoot>
+		</table>
+		<pre>
+		<code>
+			table {
+				border: 1px solid rgb(93, 177, 226);
+				border-spacing: 5px;
+				table-layout: auto;
+				width: 500px;
+			}
+		</code>
+	</pre>
+	</section>
+</body>
+
+</html>
