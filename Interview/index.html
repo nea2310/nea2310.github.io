@@ -574,7 +574,8 @@
 		в группу,
 		каждому элементу нужно прописать атрибут <b>name</b> с именем группы радиокнопок (т.е. значение <b>name</b> должно
 		быть одинаковым у всех кнопок в группе,
-		тогда можно будет выбрать только одну из них)
+		тогда можно будет выбрать только одну из них).
+		Добавление атрибута <b>name</b> элементам группы чекбоксов не имеет такого же эффекта
 	</p>
 	<section>
 		<fieldset style="max-width: 200px;">
@@ -593,16 +594,16 @@
 			<code>
 				&ltfieldset style=&quotmax-width: 200px;&quot>
 				&ltlegend&gtЧекбоксы&lt/legend>
-				&ltlabel>
-					&ltinput type=&quotcheckbox&quot> 1
-				&lt/label>
-				&ltlabel>
-					&ltinput type=&quotcheckbox&quot> 2
-				&lt/label>
-				&ltlabel>
-					&ltinput type=&quotcheckbox&quot> 3
-				&lt/label>
-			&lt/fieldset>
+				&ltlabel&gt
+					&ltinput type=&quotcheckbox&quot name=&quotcheckroup&quot&gt 1
+				&lt/label&gt
+				&ltlabel&gt
+					&ltinput type=&quotcheckbox&quot name=&quotcheckroup&quot&gt 2
+				&lt/label&gt
+				&ltlabel&gt
+					&ltinput type=&quotcheckbox&quot name=&quotcheckroup&quot&gt 3
+				&lt/label&gt
+			&lt/fieldset&gt
 			</code>
 		</pre>
 	</section>
