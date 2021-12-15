@@ -8,8 +8,19 @@
 </head>
 
 <body>
-	<h1>HTML</h1>
-	<h2>Таблицы</h2>
+	<p>
+		Содержание
+	<ul>
+		<li>
+			<a href="#tables">Таблицы</a>
+		</li>
+		<li>
+			<a href="#checkbox-radio">Чекбоксы и радиокнопки</a>
+		</li>
+	</ul>
+	</p>
+	<h1 id="html">HTML</h1>
+	<h2 id="tables">Таблицы</h2>
 	<h3>Как создавать таблицы в html?</h3>
 	<p>
 		Общая информация по таблицам.
@@ -548,6 +559,84 @@
 		</code>
 	</pre>
 	</section>
+
+
+
+	<h2 id="checkbox-radio">Чекбоксы и радиокнопки</h2>
+	<h3>В чем заключаются отличие чекбокса от радио кнопок? Как связать радиокнопки в группу?</h3>
+	<p>Отличие в том, что активных чекбоксов в группе может быть от нуля до всех из них, а в группе радиокнопок всегда
+		активна только одна</p>
+	<p>
+		Чекбокс - это элемент &ltinput&gt с атрибутом <b>type=&quotcheckbox&quot</b>
+	</p>
+	<p>
+		Радиокнопка - это тоже элемент &ltinput&gt, но с атрибутом <b>type=&quotradio&quot</b>. Чтобы связать радиокнопки
+		в группу,
+		каждому элементу нужно прописать атрибут <b>name</b> с именем группы радиокнопок (т.е. значение <b>name</b> должно
+		быть одинаковым у всех кнопок в группе,
+		тогда можно будет выбрать только одну из них)
+	</p>
+	<section>
+		<fieldset style="max-width: 200px;">
+			<legend>Чекбоксы</legend>
+			<label>
+				<input type="checkbox" name="checkroup"> 1
+			</label>
+			<label>
+				<input type="checkbox" name="checkroup"> 2
+			</label>
+			<label>
+				<input type="checkbox" name="checkroup"> 3
+			</label>
+		</fieldset>
+		<pre>
+			<code>
+				&ltfieldset style=&quotmax-width: 200px;&quot>
+				&ltlegend&gtЧекбоксы&lt/legend>
+				&ltlabel>
+					&ltinput type=&quotcheckbox&quot> 1
+				&lt/label>
+				&ltlabel>
+					&ltinput type=&quotcheckbox&quot> 2
+				&lt/label>
+				&ltlabel>
+					&ltinput type=&quotcheckbox&quot> 3
+				&lt/label>
+			&lt/fieldset>
+			</code>
+		</pre>
+	</section>
+	<section>
+		<fieldset style="max-width: 200px;">
+			<legend>Радиокнопки</legend>
+			<label>
+				<input type="radio" name="radiogroup" checked> 1
+			</label>
+			<label>
+				<input type="radio" name="radiogroup"> 2
+			</label>
+			<label>
+				<input type="radio" name="radiogroup"> 3
+			</label>
+		</fieldset>
+		<pre>
+			<code>
+				&ltfieldset style=&quotmax-width: 200px;&quot&gt
+				&ltlegend&gtРадиокнопки&lt/legend&gt
+				&ltlabel&gt
+					&ltinput type=&quotradio&quot name=&quotradiogroup&quot checked&gt 1
+				&lt/label&gt
+				&ltlabel&gt
+					&ltinput type=&quotradio&quot name=&quotradiogroup&quot&gt 2
+				&lt/label&gt
+				&ltlabel&gt
+					&ltinput type=&quotradio&quot name=&quotradiogroup&quot&gt 3
+				&lt/label&gt
+			&lt/fieldset&gt
+			</code>
+		</pre>
+	</section>
+
 </body>
 
 </html>
