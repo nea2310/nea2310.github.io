@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./css.css">
+</head>
+
+<body>
+	<p>
+		Содержание
+	<ul>
+		<li>
+			<a href="#display">Какие значения бывают у свойства display? В чём их особенность?</a>
+		</li>
+		<li>
+			<a href="#margin">Что делает свойство margin? Какие есть особенности у отрицательных значений? Что такое margin
+				collapsing?</a>
+		</li>
+		<li>
+			<a href="#vertical-align">Что делает свойство vertical-align? Какие у него есть значения?</a>
+		</li>
+		<li>
+			<a href="#float">Что делает свойство float? Почему родитель элемента с float может схлопываться?</a>
+		</li>
+		<li>
+			<a href="#position">Что делает свойство position</a>
+		</li>
+		<li>
+			<a href="#z-index">Что делает свойство z-index</a>
+		</li>
+		<li>
+			<a href="#context">Контекст наложения</a>
+		</li>
+		<li>
+			<a href="#flex">Flex</a>
+		</li>
+		<li>
+			<a href="#borders">Рамки</a>
+		</li>
+		<li>
+			<a href="#outlines">Внешние рамки (outline)</a>
+		</li>
+		<li>
+			<a href="#shadows">Тени</a>
+		</li>
+		<li>
+			<a href="#background">Фоны</a>
+		</li>
+		<li>
+			<a href="#gradients">Градиенты</a>
+		</li>
+		<li>
+			<a href="#animation">Анимации</a>
+		</li>
+		<li>
+			<a href="#transformation">Трансформации</a>
+		</li>
+		<li>
+			<a href="#footer">Как прижать футер к низу страницы (назвать хотя бы два способа)?</a>
+		</li>
+		<li>
+			<a href="#center-horizontal">Как отцентровать элемент по горизонтали (назвать хотя бы три способа)?</a>
+		</li>
+		<li>
+			<a href="#center-vertical">Как отцентровать элемент по вертикали (назвать хотя бы три способа)?</a>
+		</li>
+		<li>
+			<a href="#"></a>
+		</li>
+		<li>
+			<a href="#"></a>
+		</li>
+		<li>
+			<a href="#"></a>
+		</li>
+
+	</ul>
+	</p>
+	<h1 id="CSS">CSS</h1>
+	<h2 id="display">Какие значения бывают у свойства display? В чём их особенность?</h2>
+
+	<table id="table">
+		<thead>
+			<th>Значение</th>
+			<th>Описание</th>
+		</thead>
+		<tr>
+			<td>block</td>
+			<td> Элемент показывается как блочный. Применение этого значения для встроенных элементов, например тега
+				&ltspan&gt, заставляет его вести подобно блокам — происходит перенос строк в начале и в конце содержимого.
+			</td>
+		</tr>
+		<tr>
+			<td>inline</td>
+			<td>Элемент отображается как встроенный. Использование блочных тегов, таких как <div> и <p>, автоматически
+						создает перенос и показывает содержимое этих тегов с новой строки. Значение inline отменяет эту
+						особенность, поэтому содержимое блочных элементов начинается с того места, где окончился предыдущий
+						элемент.</td>
+		</tr>
+		<tr>
+			<td>inline-block</td>
+			<td>Это значение генерирует блочный элемент, который обтекается другими элементами веб-страницы подобно
+				встроенному элементу. Фактически такой элемент по своему действию похож на встраиваемые элементы (вроде тега
+				<img>). При этом его внутренняя часть форматируется как блочный элемент, а сам элемент — как встроенный.
+			</td>
+		</tr>
+		<tr>
+			<td>inline-table</td>
+			<td>Определяет, что элемент является таблицей как при использовании тега &lttable&gt, но при этом таблица
+				является
+				встроенным элементом и происходит ее обтекание другими элементами, например, текстом.</td>
+		</tr>
+		<tr>
+			<td>list-item</td>
+			<td>Элемент выводится как блочный и добавляется маркер списка.</td>
+		</tr>
+		<tr>
+			<td>none</td>
+			<td>Временно удаляет элемент из документа. Занимаемое им место не резервируется и веб-страница формируется так,
+				словно элемента и не было. Изменить значение и сделать вновь видимым элемент можно с помощью скриптов,
+				обращаясь к свойствам через объектную модель. В этом случае происходит переформатирование данных на странице
+				с учетом вновь добавленного элемента.</td>
+		</tr>
+		<tr>
+			<td>run-in</td>
+			<td>Устанавливает элемент как блочный или встроенный в зависимости от контекста.</td>
+		</tr>
+		<tr>
+			<td>table</td>
+			<td>Определяет, что элемент является блочной таблицей подобно использованию тега &lttable&gt.</td>
+		</tr>
+		<tr>
+			<td>table-caption</td>
+			<td>Задает заголовок таблицы подобно применению тега &ltcaption&gt.</td>
+		</tr>
+		<tr>
+			<td>table-cell</td>
+			<td>Указывает, что элемент представляет собой ячейку таблицы (тег
+				&lttd&gt или
+				&ltth&gt).</td>
+		</tr>
+		<tr>
+			<td>table-column</td>
+			<td>Назначает элемент колонкой таблицы, словно был добавлен тег &ltcol&gt.
+			</td>
+		</tr>
+		<tr>
+			<td>table-column-group</td>
+			<td>Определяет, что элемент является группой одной или более колонок таблицы, как при использовании тега
+				&ltcolgroup&gt.</td>
+		</tr>
+		<tr>
+			<td>table-footer-group</td>
+			<td>Используется для хранения одной или нескольких строк ячеек, которые отображаются в самом низу таблицы. По
+				своему действию сходно с работой тега &lttfoot&gt.</td>
+		</tr>
+		<tr>
+			<td>table-header-group</td>
+			<td>Элемент предназначен для хранения одной или нескольких строк ячеек, которые представлены вверху таблицы. По
+				своему действию сходно с работой тега &ltthead&gt.</td>
+		</tr>
+		<tr>
+			<td>table-row</td>
+			<td>Элемент отображается как строка таблицы (тег &lttr&gt или &lt&gt).</td>
+		</tr>
+		<tr>
+			<td>table-row-group</td>
+			<td>Создает структурный блок, состоящий из нескольких строк таблицы аналогично действию тега &lttbody&gt.</td>
+		</tr>
+	</table>
+	<p><b>Примеры позиционирования элементов внутри родительского блока, а также вложенных элементов, в зависимости от
+			значения
+			display:</b></p>
+
+	<br>
+	<div class="test-div-display" style="display: inline;">display: inline</div>
+	<div class="test-div-display" style="display: inline;">display: inline</div>
+	<div class="test-div-display" style="display: block;">display: block <div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+	<div class="test-div-display" style="display: block;">display: block <div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+	<div class="test-div-display" style="display: flex;">display: flex <div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+	<div class="test-div-display" style="display: flex;">display: flex <div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+
+	<div class="test-div-display" style="display: inline-block;">display: inline-block<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+	<div class="test-div-display" style="display: inline-block;">display: inline-block<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+
+	<div class="test-div-display" style="display: inline-flex;">display: inline-flex<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+	<div class="test-div-display" style="display: inline-flex;">display: inline-flex<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+
+	<div class="test-div-display" style="display: inline-flex;">display: inline-flex<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+	<div class="test-div-display" style="display: inline-flex;">display: inline-flex<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+		<div class="test-div-inner"></div>
+	</div>
+
+
+	<h2 id="margin">Что делает свойство margin? Какие есть особенности у отрицательных значений? Что такое margin
+		collapsing?</h2>
+	<p><b>Margin</b> - это отступ от границы текущего элемента до внутренней границы его родительского элемента</p>
+	<p><b>Отрицательные</b> margin-left/top сдвигают элемент влево-вверх. Остальные элементы это учитывают, в отличие от
+		сдвига
+		через position . Отрицательные margin-right/bottom заставляют другие элементы думать, что блок меньше по размеру
+		справа-внизу, чем он на самом деле:</p>
+
+
+	<div style="background-color:  rgb(177, 169, 169); margin-top: 60px; width: 200px;">
+		<div class="test-div-margins" style="margin-left: -10px;margin-top: -70px; color: blue;">margin-left:
+			-10px;margin-top: -70px;
+		</div>
+		<div class="test-div-margins" style="margin-bottom: -30px; margin-left: 30px; color: blue;">margin-left:
+			30px;margin-bottom:
+			-30px;</div>
+	</div>
+	<p><b>Margin collapsing - схлопывание маржинов. </b>У блочных элементов расположенных рядом друг с другом
+		<b>по вертикали</b> наблюдается эффект схлопывания, когда отступы не суммируются, а объединяются между собой. Само
+		схлопывание действует на два и более блока (один может быть вложен внутрь другого) с отступами сверху или снизу,
+		при этом примыкающие отступы комбинируются в один. Для отступов слева и справа схлопывание никогда не применяется.
+	<ul>Схлопывание не срабатывает:
+		<li>для элементов, у которых на стороне схлопывания задано свойство padding (не распространяется на сестринские
+			элементы).</li>
+		<li>для элементов, у которых на стороне схлопывания задана граница;</li>
+		<li>на элементах с абсолютным позиционированием, т.е. таких, у которых position установлено как absolute;</li>
+		<li>на плавающих элементах (для них свойство float задано как left или right);</li>
+		<li>для строчных элементов;</li>
+		<li>для &lthtml&gt</li>
+	</ul>
+
+
+
+	</p>
+
+	<p> <b>Примеры схлопывания маржинов и результирующего позиционирования элементов относительно родительского блока и
+			друг друга. Все блоки имеют отступы margin-top и margin-bottom 60px. Другие свойства
+			указаны в таблицах для каждого рассматриваемого случая. Высота внутренних блоков 60px (равна маржину для более
+			легкого визуального восприятия) </b></p>
+
+	<!-- ======================== 1 ======================== -->
+	<caption class="table-margin-caption">1</caption>
+	<table class="table-margin">
+		<thead>
+			<th>Свойство</th>
+			<th>Родительский блок (черный)</th>
+			<th>Первый вложенный блок (оранжевый)</th>
+			<th>Второй вложенный блок (сиреневый)</th>
+		</thead>
+		<tr>
+			<td>display</td>
+			<td>display: block</td>
+			<td>display: block</td>
+			<td>display: block</td>
+		</tr>
+		<tr>
+			<td>padding</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>border</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>Схлопывание маржинов</td>
+			<td colspan="3">Между родителем и первым дочерним - да, между дочерними - да</td>
+		</tr>
+	</table>
+
+	<div style="background-color:  black; margin-top: 60px;">
+		<div class="test-div-margins" style="display: block;"></div>
+		<div class="test-div-margins" style="display: block;"></div>
+	</div>
+
+
+
+	<!-- ================================================ -->
+
+	<caption class="table-margin-caption">2</caption>
+	<table class="table-margin">
+		<thead>
+			<th>Свойство</th>
+			<th>Родительский блок (черный)</th>
+			<th>Первый вложенный блок (оранжевый)</th>
+			<th>Второй вложенный блок (сиреневый)</th>
+		</thead>
+		<tr>
+			<td>display</td>
+			<td>display: block</td>
+			<td>display: block</td>
+			<td>display: block</td>
+		</tr>
+		<tr>
+			<td>padding</td>
+			<td>padding-top: 1px</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>border</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>Схлопывание маржинов</td>
+			<td colspan="3">Между родителем и первым дочерним - нет, между дочерними - да</td>
+		</tr>
+	</table>
+
+	<div style="background-color:  black; margin-top: 60px; padding-top: 1px;">
+		<div class="test-div-margins" style="display: block;"></div>
+		<div class="test-div-margins" style="display: block;"></div>
+	</div>
+	<!-- ================================================ -->
+	<caption class="table-margin-caption">3</caption>
+	<table class="table-margin">
+		<thead>
+			<th>Свойство</th>
+			<th>Родительский блок (черный)</th>
+			<th>Первый вложенный блок (оранжевый)</th>
+			<th>Второй вложенный блок (сиреневый)</th>
+		</thead>
+		<tr>
+			<td>display</td>
+			<td>display: block</td>
+			<td>display: block</td>
+			<td>display: block</td>
+		</tr>
+		<tr>
+			<td>padding</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>border</td>
+			<td>border: 5px solid red;</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>Схлопывание маржинов</td>
+			<td colspan="3">Между родителем и первым дочерним - нет, между дочерними - да</td>
+		</tr>
+	</table>
+
+	<div style="background-color:  black; margin-top: 60px; border: 5px solid red;">
+		<div class="test-div-margins" style="display: block;"></div>
+		<div class="test-div-margins" style="display: block;"></div>
+	</div>
+
+
+	<!-- ================================================ -->
+	<caption class="table-margin-caption">4</caption>
+	<table class="table-margin">
+		<thead>
+			<th>Свойство</th>
+			<th>Родительский блок (черный)</th>
+			<th>Первый вложенный блок (оранжевый)</th>
+			<th>Второй вложенный блок (сиреневый)</th>
+		</thead>
+		<tr>
+			<td>display</td>
+			<td>display: flex; flex-direction: column</td>
+			<td>block</td>
+			<td>block</td>
+		</tr>
+		<tr>
+			<td>padding</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>border</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>Схлопывание маржинов</td>
+			<td colspan="3">Между родителем и первым дочерним - нет, между дочерними - нет</td>
+		</tr>
+	</table>
+
+	<div style="background-color:  black; margin-top: 60px; display: flex; flex-direction: column;">
+		<div class="test-div-margins" style="display: block;"></div>
+		<div class="test-div-margins" style="display: block;"></div>
+	</div>
+
+
+
+	<!-- ================================================ -->
+	<caption class="table-margin-caption">5</caption>
+	<table class="table-margin">
+		<thead>
+			<th>Свойство</th>
+			<th>Родительский блок (черный)</th>
+			<th>Первый вложенный блок (оранжевый)</th>
+			<th>Второй вложенный блок (сиреневый)</th>
+		</thead>
+		<tr>
+			<td>display</td>
+			<td>display: block</td>
+			<td>display: block</td>
+			<td>display: block</td>
+		</tr>
+		<tr>
+			<td>padding</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>border</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>float</td>
+			<td>float: left</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>Схлопывание маржинов</td>
+			<td colspan="3">Между родителем и первым дочерним - нет, между дочерними - да</td>
+		</tr>
+	</table>
+
+	<div style="background-color:  black; margin-top: 60px; float: left; height: 200px;">
+		<div class="test-div-margins" style="display: block;"></div>
+		<div class="test-div-margins" style="display: block;"></div>
+	</div>
+
+
+
+	<!-- ====================6============================ -->
+
+
+
+	<caption class="table-margin-caption">6</caption>
+	<table class="table-margin" style="margin-top: 300px;">
+		<thead>
+			<th>Свойство</th>
+			<th>Родительский блок (черный)</th>
+			<th>Первый вложенный блок (оранжевый)</th>
+			<th>Второй вложенный блок (сиреневый)</th>
+		</thead>
+		<tr>
+			<td>display</td>
+			<td>display: block</td>
+			<td>display: inline-block</td>
+			<td>display: inline-block</td>
+		</tr>
+		<tr>
+			<td>padding</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>border</td>
+			<td>нет</td>
+			<td>нет</td>
+			<td>нет</td>
+		</tr>
+		<tr>
+			<td>Схлопывание маржинов</td>
+			<td colspan="3">Между родителем и первым дочерним - нет, между дочерними - не применимо</td>
+		</tr>
+	</table>
+
+	<div style="background-color:  black; margin-top: 60px; ">
+		<div class="test-div-margins" style="display: inline-block"></div>
+		<div class="test-div-margins" style="display: inline-block"></div>
+	</div>
+
+
+
+	<!-- ================================================ -->
+
+	<h2 id="vertical-align">Что делает свойство vertical-align? Какие у него есть значения?</h2>
+	<p>Свойство для выравнивания строчного или строчно-блочного элемента по вертикали</p>
+
+
+	<p style="font-size: 36px">vertical-align: baseline <img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: baseline;"><img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: middle;">vertical-align: middle</p>
+
+	<p style="font-size: 36px">vertical-align: top <img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: top"><img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: text-top;">vertical-align: text-top</p>
+
+	<p style="font-size: 36px">vertical-align: bottom <img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: bottom;"><img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: text-bottom;">vertical-align: text-bottom</p>
+
+	<p style="font-size: 36px">vertical-align: sub <img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: sub;"><img class="vert-align-img" src="aksolotl.jpg"
+			style="vertical-align: super;">vertical-align: super</p>
+
+
+	<p style="font-size: 36px">vertical-align
+		<span class="vert-align-span" style="vertical-align: baseline;">baseline</span>
+		<span class="vert-align-span" style="vertical-align: middle;">middle</span>
+		vertical-align
+	</p>
+
+	<p style="font-size: 36px">vertical-align
+		<span class="vert-align-span" style="vertical-align: top;">top</span>
+		<span class="vert-align-span" style="vertical-align: text-top;">text-top</span>
+		<span class="vert-align-span" style="vertical-align: super;">super</span>
+		vertical-align
+	</p>
+
+	<p style="font-size: 36px">vertical-align
+		<span class="vert-align-span" style="vertical-align: bottom;">bottom</span>
+		<span class="vert-align-span" style="vertical-align: sub;">sub</span>
+		<span class="vert-align-span" style="vertical-align: text-bottom;">text-bottom</span>
+	</p>
+	<p>Помимо ключевых слов можно использовать числовые значения.
+		Если указать значение в любых доступных единицах измерения, то положительное значение сдвинет элемент вверх
+		относительно базовой линии, а отрицательно — вниз.
+		Если указать числовое значение в процентах, то за 0% берётся нижняя граница текста без выносных элементов. То есть
+		аналогично baseline. Процент рассчитывается от line-height родительского элемента.</p>
+
+
+	<h2 id="float">Что делает свойство float? Почему родитель элемента с float может схлопываться?</h2>
+	<div style="background-color: salmon;">
+		<img height="150px" src="aksolotl.jpg" style="float: left;">
+		Это родитель элемента с float. Он схлопнулся
+	</div>
+	<div style="height: 30px; background-color: royalblue;">это блок ниже блока, содержащего картинку с float</div>
+	<div style="height: 180px; background-color: orchid">Этот блок еще ниже</div>
+
+
+	<div style="background-color: salmon;display: flow-root;">
+		<img height="150px" src="aksolotl.jpg" style="float: left;">
+		Это родитель элемента с float, и ему задано свойство display: flow-root
+	</div>
+	<div style="height: 30px; background-color: royalblue;">это блок ниже блока, содержащего картинку с float</div>
+	<div style="height: 30px; background-color: orchid">Этот блок еще ниже</div>
+
+
+
+	<div style="background-color: salmon;overflow: hidden;">
+		<img height="150px" src="aksolotl.jpg" style="float: left;">
+		Это родитель элемента с float, и ему задано свойство overflow: hidden;
+	</div>
+	<div style="height: 30px; background-color: royalblue;">это блок ниже блока, содержащего картинку с float</div>
+	<div style="height: 30px; background-color: orchid">Этот блок еще ниже</div>
+
+
+
+	<h2 id="position">Что делает свойство position?</h2>
+	<p>Свойство position задаёт способ позиционирования элемента в документе. Совместно со свойствами left, right, top,
+		bottom элементу задаётся его местоположение на странице.</p>
+	<h3>Какие элементы называют позиционированными?</h3>
+	<p>Это элементы со значением свойства Position, отличным от Static</p>
+	<h3>Относительно чего происходит позиционирование элементов при разных значениях свойства position?</h3>
+	<ul>
+		<li>Relative: элемент позиционируется так же, как и статичный, но его отображение может быть смещено относительно
+			своего начального положения при помощи свойств left, right, top, bottom. Это смещение чисто визуальное и не
+			затрагивает положение соседних элементов, кроме случая, когда элемент выходит за границы родителя, имеющего
+			возможность прокрутки.</li>
+		<li>Absolute: элемент позиционируется относительно ближайшего позиционированного предка</li>
+		<li>Fixed: элемент позиционируется относительно окна браузера, за исключением случаев, если один из родителей
+			имеет значения свойств transform, perspective или filter, отличные от none. В этом случае блок становится
+			опорным, и позиционирование будет производиться уже относительно него, а не окна браузера</li>
+		<li>Sticky: элемент позиционируется в нормальном потоке так же, как и статичный, а затем смещается при помощи
+			свойств left, right, top, bottom относительно ближайшего родителя, имеющего прокрутку.</li>
+	</ul>
+	<h2 id="z-index">Что делает свойство z-index?</h2>
+	<p>Свойство z-index позволяет управлять порядком наложения элементов друг на друга.</p>
+
+	<h2 id="context">Контекст наложения</h2>
+	<p>Контекст наложения — это концепция трёхмерного расположения элементов по оси z относительно пользователя,
+		смотрящего на экран.</p>
+	<h3 style="margin-bottom: 60px;">Как влияет на расположение элементов с заданным значением z-index?</h3>
+
+
+	<div
+		style="color: blue; width: 50vw;border: 5px solid blue; position: relative;font-weight: bold;z-index: 0;display: flow-root;">
+		Родитель, задающий контекст наложения (position: relative;z-index: 0)
+		<div
+			style="width: 45vw;height: 45vh;border: 5px solid darkmagenta; background-color:hotpink; color: darkmagenta; position: absolute; top: -5vh; z-index: -1;right: -20px;">
+			Позиционированный элемент, z-index: -1;
+		</div>
+		<div style="color: teal; width: 40vw;height: 40vh;border: 5px solid teal; background-color: yellowgreen">
+			Элемент без контекста наложения с display: block
+		</div>
+		<div
+			style="color: orangered; width: 35vw;height: 35vh;border: 5px solid orangered; background-color: coral; position: absolute; top: 40px; z-index: 0;right: -40px;">
+			Позиционированный элемент, z-index: 0;
+		</div>
+
+		<div
+			style="color: crimson; width: 30vw;height: 30vh;border: 5px solid crimson; background-color: khaki; position: absolute; top: 60px; z-index: 1;right: -60px;">
+			Позиционированный элемент, z-index: 1;
+		</div>
+
+		<span style="color: slateblue; border: 5px solid slateblue; background-color: wheat;">
+			Элемент без контекста наложения с display: inline
+		</span>
+		<div
+			style="color: hotpink; width: 25vw;height: 25vh;border: 5px solid hotpink; background-color: whitesmoke; opacity: 0.9;">
+			Элемент без контекста наложения с opacity: 0.9
+		</div>
+		<div
+			style="color: rgb(248, 48, 13); width: 25vw;height: 25vh;border: 5px solid rgb(248, 48, 13); background-color: rgb(174, 238, 161); float: left;">
+			Элемент без контекста наложения с float: left
+		</div>
+	</div>
+	<h3>Какие свойства создают новый контекст наложения?</h3>
+	<ul>Новый контекст наложения формируется если:
+		<li>это корневой элемент (&lthtml&gt)</li>
+		<li>элемент позиционирован абсолютно (position: absolute) или относительно (position: relative) со свойством
+			z-index, значение которого не auto</li>
+		<li>флекс-элемент со свойством z-index, значение которого не auto и чей родительский элемент имеет свойство
+			display: flex или display: inline-flex</li>
+		<li>элементу задано свойство opacity со значением меньше 1</li>
+		<li>элементу задано свойство transform со значением не none</li>
+		<li>элементу задано свойство mix-blend-mode со значением не normal</li>
+		<li>элементу задано свойство filter со значением не none</li>
+		<li>элементу задано свойство will-change или аналогичный атрибут</li>
+		<li>элементу задано свойство isolation со значением isolate</li>
+		<li>элемент с position: fixed</li>
+		<li>элементу задано свойство -webkit-overflow-scrolling со значением touch</li>
+	</ul>
+
+
+	<div style="color: blue; width: 25vw;border: 5px solid blue; font-weight: bold;margin-bottom: 20px; display: flex;">
+		Flex контейнер
+		<div style="width: 10vw;height: 10vh;background-color: tomato;"></div>
+		<div style="width: 10vw;height: 10vh;background-color: turquoise;"></div>
+	</div>
+
+	<div style="color: blue; width: 25vw;border: 5px solid blue; font-weight: bold; margin-bottom: 20px; opacity: 0.8;">
+		Контейнер с opacity
+		<div style="width: 10vw;height: 10vh;background-color: tomato;"></div>
+		<div style="width: 10vw;height: 10vh;background-color: turquoise;"></div>
+	</div>
+
+	<div
+		style="color: blue; width: 25vw;border: 5px solid blue; font-weight: bold; margin-bottom: 20px; transform: rotate(-5deg);">
+		Контейнер с transform
+		<div style="width: 10vw;height: 10vh;background-color: tomato;"></div>
+		<div style="width: 10vw;height: 10vh;background-color: turquoise;"></div>
+	</div>
+
+	<h2 id="flex">Flex</h2>
+	<h3>Что такое flexbox?</h3>
+	<p>CSS flexbox (Flexible Box Layout Module) — модуль макета гибкого контейнера — представляет собой способ компоновки
+		элементов, в основе лежит идея оси. Flexbox состоит из гибкого контейнера (flex container) и гибких элементов
+		(flex items). Гибкие элементы могут
+		выстраиваться в строку или столбик, а оставшееся свободное пространство распределяется между ними различными
+		способами.</p>
+	<h3>Существует ли инлайновый flexbox?</h3>
+	<p>Да, display: inline-flex</p>
+	<h3>Что такое flex-container и flex-items?</h3>
+	<p>Флекс-контейнер: элемент, к которому применяется свойство display: flex или display: inline-display: flex.
+		Вложенные в него
+		элементы подчиняются
+		правилам раскладки флексов.
+	</p>
+	<p>Флекс-элемент: элемент, вложенный во флекс-контейнер.</p>
+	<h3>Как выравнивать элементы с помощью flexbox?</h3>
+	<p>При помощи свойств flex-контейнера и flex-элементов</p>
+	<h3>Принципы работы flex-grow, flex-shrink. Каким образом рассчитывается занимаемое и свободное пространство при
+		использовании этих свойств?</h3>
+	<p>flex-grow - задает пропорцию, в которой элемент занимает свободное пространство в flex-контейнере по сравнению с
+		другими элементами.
+		Значение от 0 до 1, по умолчанию 0 (не расширяется).
+	</p>
+	<p>flex-shrink - задает пропорцию, в которой элемент сжимается (уступает свою ширину) по сравнению с другими
+		элементами в flex-контейнере.
+		Значение от 0 до 1, по умолчанию 1 (не сжимается)
+	</p>
+
+
+
+
+	<h2 id="borders">Рамки</h2>
+	<div id="div-border" style="width: 150px; height: 150px;"></div>
+	<h2 id="outlines">Внешние рамки (outline)</h2>
+	<p>В чем отличие от обычных рамок?
+	<ul>
+		<li>Нельзя задать разные стили внешней рамки для разных сторон блока</li>
+		<li>Не имеет свойства border-radius, т.е. если нужно скруглить углы, то это нужно сделать при помощи свойства
+			border-radius (т.е. внутренней рамкой)</li>
+		<li>внешняя рамка может отступать от элемента (или размещаться внутри него)</li>
+	</ul>
+	</p>
+
+	<h2 id="shadows">Тени</h2>
+	<h3>Что делает свойство text-shadow</h3>
+	<p>Свойство text-shadow даёт возможность добавить тень буквам в тексте.</p>
+	<ul>Каждая тень состоит из следующих значений:
+		<li>
+			<ul>Два или три значения размера с единицами измерения.
+				<li>Если задано только два значения, то они интерпретируются как смещение по осям x и y.</li>
+				<li>Если задано и третье значение тоже, то оно отвечает за размытие тени.</li>
+			</ul>
+		</li>
+		<li>Цвет тени в любом доступном формате. Может быть указан до числовых значений размеров, так и после. Но не между
+			значениями. А то браузер запутается.</li>
+	</ul>
+	<span id="span-text-shadow">это текст с двумя тенями</span>
+	<h3>Что делает свойство box-shadow? Как им пользоваться?</h3>
+	<ul>Каждая тень состоит из следующих значений:
+		<li>
+			<ul>Два, три или четыре значения размера с единицами измерения:
+				<li>Если задано два значения, то они расшифровываются как смещение по оси x и по оси y.</li>
+				<li>Если задано третье значение, то оно интерпретируется как радиус размытия.</li>
+				<li>Если задано четвёртое значение, то оно отвечает за радиус распространения.</li>
+			</ul>
+		</li>
+		<li>Дополнительно (необязательно) можно указать ключевое слово inset, которое превратит тень из внешней во
+			внутреннюю.</li>
+		<li>Чаще всего, но не обязательно, нужно указывать цвет тени в любом доступном формате цвета.</li>
+	</ul>
+
+	<div id="div-box-shadow" style="background-color: palevioletred;"></div>
+
+
+	<h3>Как сделать так, чтобы у одного элемента было несколько теней?</h3>
+	Перечислить их через запятую в свойстве text-shadow или box-shadow
+
+	<h3>Есть ли возможность задавать параметры теней отдельно (например, задать отдельно цвет или размер тени)?</h3>
+	Нет
+
+	<h2 id="background">Фоны</h2>
+	<p>background-image задаёт элементу фоновую картинку или градиент. Синтаксис:
+		background-image: url("background.png") или background-image: linear-gradient(red, yellow, green);</p>
+	<p>background-position управляет положением фоновой картинки внутри элемента. Синтаксис:
+		background-position: 100% 100% или background-position: center bottom или background-position: 10px 150px. Для
+		этого свойства проценты рассчитываются необычным для CSS образом: от разницы
+		между размером элемента и размером самой фоновой картинки, т.е. от свободного места. Ключевые слова можно
+		указывать в любом порядке. В остальных случаях первая величина — это позиция по горизонтали, а вторая, если есть —
+		по вертикали. Значение по умолчанию — 0% 0% (левый верхний угол). Если указано только одно значение, то второе
+		подставляется автоматически и равняется 50%. То есть значение 100% расположит картинку по центру правого края.
+	</p>
+
+	<p>background-size - позволяет изменять размер фонового изображения. Синтаксис: background-size: 100% 100%</p>
+	<ul>В качестве значения для свойства background-size можно задавать:
+		<li>Точный размер в любых единицах измерения, доступных в вебе.</li>
+		<li>Проценты. Размер в процентах будет рассчитываться от размеров элемента.</li>
+		<li>Ключевое слово auto. Размер изображения остаётся неизменным. Кстати, это ключевое слово является значением по
+			умолчанию.</li>
+		<li>Ключевое слово cover. Изображение масштабируется без изменения пропорций так, чтобы закрыть фон всего
+			элемента. Короткая сторона изображения подстраивается под соответствующую сторону элемента. А длинная сторона
+			закрывает длинную сторону элемента, а остальное, что не попало в поле видимости, обрезается.</li>
+		<li>Ключевое слово contain. Изображение масштабируется без изменения пропорций так, чтобы полностью поместиться в
+			элемент.</li>
+	</ul>
+
+	<p>background-repeat - управляет тем, будет ли повторяться фоновое изображение. По умолчанию значение у этого
+		свойства repeat. Значит фоновая картинка будет повторяться по вертикали и по горизонтали</p>
+
+	<p>background-origin - определяет какие области блока будет занимать фоновая картинка: все области, включая рамку,
+		внутренний отступ и контент или только контент. Не влияет на background-color</p>
+	<p>background-clip - определяет, в каких областях будет находиться фоновая картинка и фоновый цвет блока.</p>
+	<p>background-attachment - определяет будет ли фон прокручиваться вместе со страницей или будет зафиксирован на одном
+		месте. Часто используется для создания так называемого эффекта параллакса</p>
+	<p>background-color - для задания цвета фона элемента</p>
+	<p></p>
+
+
+
+	<ul>Шорткат, позволяющий задать все свойства фона разом. Объединяет в себе:
+		<li>background-attachment</li>
+		<li>background-clip</li>
+		<li>background-color</li>
+		<li>background-image</li>
+		<li>background-position</li>
+		<li>background-repeat</li>
+		<li>background-size</li>
+	</ul>
+
+	<h2 id="gradients">Градиенты</h2>
+	<p> <b>Что делает функция linear-gradient? Как ей пользоваться?</b> </p>
+	<p>Используется для задания фона в виде линейного градиента. Градиент — это плавный переход между цветами. Линейный
+		градиент описывает изменение цвета вдоль прямой линии. В отличие от фоновых изображений градиент не может иметь
+		конкретных размеров и его фактический размер совпадает с размером элемента.
+
+	<pre>
+	Синтаксис:
+	background-image: linear-gradient(угол_поворота_оси, цвет точка_останова точка_останова, цвет точка_останова точка_останова (сколько угодно цветов))
+
+	Угол поворота оси: если указан, тогда линия, вдоль которой строится градиент, повернётся на нужный угол.
+	Единица измерения - deg или turn
+
+	Точка останова:  в начальной точке заканчивается плавный переход из предыдущего цвета. 
+	Конечная точка — это точка, с которой начинается плавный переход в следующий цвет.
+	</pre>
+
+	<p>background-image: linear-gradient(45deg, yellow, purple, white, black);</p>
+	<div class="div-linear-gradient div-linear-gradient-1"></div>
+	<p>background-image: linear-gradient(yellow 10%, purple 30% 50%, green 50%, black);</p>
+	<div class="div-linear-gradient div-linear-gradient-2"></div>
+	<p>background-image: repeating-linear-gradient(rgb(238, 238, 117) 10%, rgb(235, 155, 235) 20%, rgb(238, 238, 117)
+		30%);</p>
+	<div class="div-linear-gradient div-linear-gradient-3"></div>
+
+
+	</p>
+	<p> <b>Что делает функция radial-gradient? Как ей пользоваться?</b> </p>
+	<p>Используется для задания фона в виде радиального (кругового, эллиптического) градиента. Радиальный градиент — это
+		переход, который начинается в точке и расходится от неё подобно кругам на воде. Радиальный градиент не обязательно
+		должен быть круговым. Форма по умолчанию — это эллипс, который заполняет всю площадь элемента. </p>
+	<p>
+	<pre>
+	Синтаксис:
+	background-image: radial-gradient(размер положение_центра, форма, цвет, цвет, (сколько угодно цветов) );
+
+	Размер:
+		closest-side — градиент имеет такую форму, что заканчивается у ближайшей к центру границы элемента;
+		farthest-side — градиент заканчивается у дальней от центра границы элемента;
+		closest-corner — форма градиента подбирается таким образом, чтобы его край проходил через ближайший к центру угол;
+		farthest-corner — край градиента будет проходить через дальний от центра угол.
+	Положение центра:
+		at left
+		at top
+		at right
+		at bottom
+		at center
+		at top left
+		at 20% 50%
+		at 130px 500px
+		и т.д.
+	Форма: circle, ellipse (по умолчанию). Размер и положение центра совместимы только с ellipse (они не работают, если одновременно указана форма градиента,
+	т.е. работают только для значения формы по умолчанию)
+	</pre>
+	</p>
+
+	<p>background-image: radial-gradient(circle, yellow, purple, white, black);</p>
+	<div class="div-radial-gradient-circle"></div>
+	<p>background-image: radial-gradient(at 20% 40%, yellow, purple, white, black);</p>
+	<div class="div-radial-gradient-ellipse div-radial-gradient-ellipse-1"></div>
+	<p>background-image: radial-gradient(at top, yellow, purple, white, black);</p>
+	<div class="div-radial-gradient-ellipse div-radial-gradient-ellipse-2"></div>
+	<p>background-image: radial-gradient(closest-corner at 40% 20%, yellow, purple, white, black);</p>
+	<div class="div-radial-gradient-ellipse div-radial-gradient-ellipse-3"></div>
+	<p>background-image: repeating-radial-gradient(closest-side at 40% 20%, yellow, purple);</p>
+	<div class="div-radial-gradient-ellipse div-radial-gradient-ellipse-4"></div>
+
+
+	<h2 id="animation">Анимации</h2>
+	<h3>Что такое @keyframes? Зачем нужно? Как им пользоваться?</h3>
+	<p>Первый этап создания CSS-анимации — это определение ключевых кадров. В ключевом кадре определяется вид той или
+		иной сцены. Таких кадров может быть множество. Когда анимация воспроизводится, браузер двигается от одного
+		ключевого кадра ко второму и прорисовывает промежуточные значения между ними. Яркий пример подобной прорисовки —
+		анимация через transition, где вы предоставляете два ключевых кадра (начальный и конечный стили), а браузер берет
+		на себя работу по просчету промежуточных фаз. Ключевые кадры позволяют создавать большее количество стилей, а не
+		ограничиваться двумя.</p>
+	<p>Для записи ключевых кадров используется специальное правило @keyframes. В каждом ключевом кадре необходимо
+		разместить те свойства, которые должны применяться к элементу в заданный момент времени.</p>
+
+	<p>Структура правила выглядит следующим образом:</p>
+
+
+	<pre> <code>
+	@keyframes animationName {
+	from {
+	/* Список CSS-свойств */
+	}
+	to {
+	/* Список CSS-свойств */
+	}
+	}</code>	</pre>
+	<p>Сначала мы объявляем правило с помощью слова @keyframes, после чего указываем название анимации (имя может быть
+		произвольным, но при этом желательно сделать его информативным). Следом, в фигурных скобках записываем ключевые
+		кадры (минимум два). В нашем примере первый кадр начинается ключевым словом from, а второй — словом to. После
+		этого ставятся фигурные скобки, в которых записываются необходимые CSS-свойства в привычном нам формате. Другими
+		словами, каждый ключевой кадр имеет вид обычного стиля CSS, состоящего из набора свойств.</p>
+
+	<p> Представим, что мы хотим создать примитивную двухкадровую анимацию, в которой один цвет фона (красный) меняется
+		на
+		другой (зеленый). Мы запишем правило в таком виде:</p>
+
+	<pre><code>	
+	@keyframes changeBackgroundColor {
+	from {
+	background-color: red;
+	}
+	to {
+	background-color: green;
+	}
+	}</code></pre>
+
+	<p> Но это самый простой пример. Как мы уже говорили, можно создавать более двух ключевых кадров, что гораздо более
+		интересно. Давайте модифицируем наш пример, добавив еще один ключевой кадр в середину анимации, чтобы фоновый цвет
+		сначала менялся с красного на желтый, а затем с желтого на зеленый:</p>
+
+	<pre><code>
+	@keyframes changeBackgroundColor {
+	from {
+	background-color: red;
+	}
+	50% {
+	background-color: yellow;
+	}
+	to {
+	background-color: green;
+	}
+	}</code></pre>
+
+	<p>Запись 50% означает, что фон станет желтым ровно в середине анимации. По такому принципу можно добавлять сколько
+		угодно ключевых кадров — просто используйте необходимое число в процентах (30%, 60%, 75% и так далее). Позже,
+		когда будет задана длительность анимации, станет понятно, сколько времени пройдет до появления желтого цвета. К
+		примеру, если вы установите длительность в размере 6 секунд, то желтый цвет фона появится через 3 секунды после
+		старта анимации.
+	</p>
+
+	<p> Разумеется, можно указывать в одном кадре несколько CSS-свойств. Например, чтобы сместить наш элемент вниз на 50
+		пикселей к середине анимации, и еще на 50 пикселей — к концу анимации, следует записать:</p>
+
+	<pre><code>	
+	@keyframes changeBackgroundColor {
+	from {
+	background-color: red;
+	}
+	50% {
+	background-color: yellow;
+	transform: translateY(50px);
+	}
+	to {
+	background-color: green;
+	transform: translateY(100px);
+	}
+	}</code></pre>
+
+	<p>Еще более интересно то, что можно создавать паузы в анимации, записывая один набор свойств для нескольких ключевых
+		кадров сразу. Например, чтобы красный цвет сменился на желтый к 33% от длительности анимации, а переход от желтого
+		к зеленому начался после 66%, запишите следующее:</p>
+
+	<pre><code>
+	@keyframes changeBackgroundColor {
+	from {
+	background-color: red;
+	}
+	33%, 66% {
+	background-color: yellow;
+	transform: translateY(50px);
+	}
+	to {
+	background-color: green;
+	transform: translateY(100px);
+	}
+	}</code></pre>
+	<p>Таким образом мы создадим эффект паузы на временном отрезке с 33% до 66%.</p>
+
+	<p>Ключевые слова from и to равнозначны процентным записям 0% и 100% соответственно. Вам не обязательно начинать
+		анимацию с 0% и заканчивать на 100%. Ее можно запускать позже и завершать раньше, при этом добиваясь интересных
+		эффектов.</p>
+
+	<h3>Можно ли задать несколько анимаций для элемента?</h3>
+	<p>Можно, через запятую:
+	<pre>
+		animation:
+		circle-to-square 10s infinite alternate ease-out 1s,
+		color-change 5s alternate linear infinite;
+	</pre>
+	</p>
+
+
+
+	<div style="gap:30px; display: flex; justify-content: space-between;">
+		<div class="animation-img-wrapper"
+			style="flex-grow:2; height:300px; background-color: rgb(23, 5, 39);position:relative;z-index: 0;">
+			<div style="height: 20px; background-color: rgb(255, 255, 255)">Animation</div>
+			<svg class="animation-img animation-img_1" width="20" height="19" viewBox="0 0 20 19"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M10 13.4219L13.75 15.6719L12.7656 11.4062L16.0938 8.5L11.6875 8.125L10 4.09375L8.3125 8.125L3.90625 8.5L7.23438 11.4062L6.25 15.6719L10 13.4219ZM19.9844 7.23438L14.5469 11.9688L16.1875 19L10 15.25L3.8125 19L5.45312 11.9688L0.015625 7.23438L7.1875 6.625L10 0.015625L12.8125 6.625L19.9844 7.23438Z" />
+			</svg>
+
+			<svg class="animation-img animation-img_2" width="20" height="19" viewBox="0 0 20 19"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M10 13.4219L13.75 15.6719L12.7656 11.4062L16.0938 8.5L11.6875 8.125L10 4.09375L8.3125 8.125L3.90625 8.5L7.23438 11.4062L6.25 15.6719L10 13.4219ZM19.9844 7.23438L14.5469 11.9688L16.1875 19L10 15.25L3.8125 19L5.45312 11.9688L0.015625 7.23438L7.1875 6.625L10 0.015625L12.8125 6.625L19.9844 7.23438Z" />
+			</svg>
+
+			<svg class="animation-img animation-img_3" width="20" height="19" viewBox="0 0 20 19"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M10 13.4219L13.75 15.6719L12.7656 11.4062L16.0938 8.5L11.6875 8.125L10 4.09375L8.3125 8.125L3.90625 8.5L7.23438 11.4062L6.25 15.6719L10 13.4219ZM19.9844 7.23438L14.5469 11.9688L16.1875 19L10 15.25L3.8125 19L5.45312 11.9688L0.015625 7.23438L7.1875 6.625L10 0.015625L12.8125 6.625L19.9844 7.23438Z" />
+			</svg>
+
+			<svg class="animation-img animation-img_4" width="20" height="19" viewBox="0 0 20 19"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M10 13.4219L13.75 15.6719L12.7656 11.4062L16.0938 8.5L11.6875 8.125L10 4.09375L8.3125 8.125L3.90625 8.5L7.23438 11.4062L6.25 15.6719L10 13.4219ZM19.9844 7.23438L14.5469 11.9688L16.1875 19L10 15.25L3.8125 19L5.45312 11.9688L0.015625 7.23438L7.1875 6.625L10 0.015625L12.8125 6.625L19.9844 7.23438Z" />
+			</svg>
+
+			<svg class="animation-img animation-img_5" width="20" height="19" viewBox="0 0 20 19"
+				xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M10 13.4219L13.75 15.6719L12.7656 11.4062L16.0938 8.5L11.6875 8.125L10 4.09375L8.3125 8.125L3.90625 8.5L7.23438 11.4062L6.25 15.6719L10 13.4219ZM19.9844 7.23438L14.5469 11.9688L16.1875 19L10 15.25L3.8125 19L5.45312 11.9688L0.015625 7.23438L7.1875 6.625L10 0.015625L12.8125 6.625L19.9844 7.23438Z" />
+			</svg>
+		</div>
+		<div class="transition-div-wrapper">
+			<span style="align-self: start;">Transition</span>
+			<div class="transition-div">
+			</div>
+		</div>
+	</div>
+
+	<h2 id="transformation">Трансформации</h2>
+	<h3>Что делает свойство transform? Какие значения ему можно задавать?</h3>
+	<p>Свойство transform используем, когда нам нужно применить к элементу какие-либо трансформации:
+		смещение, масштабирование, искажение, поворот. Нельзя трансформировать строчные и табличные элементы.</p>
+	<div style="display: flex; gap: 20px;flex-wrap: wrap;">
+
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: translateX(10px);">transform: translateX(10px)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: translateY(10px);">transform: translateY(10px)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: translate(10px, 10px);">transform: translate(10px, 10px)</div>
+		</div>
+
+
+
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: scaleX(0.5);">transform: scaleX(0.5)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: scaleY(0.5);">transform: scaleY(0.5)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: scale(0.5, 0.5);">transform: scale(0.5, 0.5)</div>
+		</div>
+
+
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: skewX(30deg);">transform: skewX(30deg)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: skewY(30deg);">transform: skewY(30deg)</div>
+		</div>
+
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: rotateX(30deg);">transform: rotateX(30deg)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: rotateY(30deg);">transform: rotateY(30deg)</div>
+		</div>
+		<div class="transform-wrapper">
+			<div class="transform-inner" style="transform: rotateZ(30deg);">transform: rotateZ(30deg)</div>
+		</div>
+	</div>
+	<h3>Можно ли задать несколько трансформаций для элемента?</h3>
+	<p>Можно, через пробел, без запятой: transform: rotateZ(30deg) translateX(50px);</p>
+
+	<div class="transform-wrapper">
+		<div class="transform-inner" style="transform: rotateZ(30deg) translateX(50px);">transform: rotateZ(30deg)
+			translateX(50px)
+		</div>
+	</div>
+
+	<h2>Изменяется ли положение координатной плоскости при трансформациях?</h2>
+	<p>Нет</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<h2 id="footer">Как прижать футер к низу страницы (назвать хотя бы два способа)?</h2>
+	<h3>Способ 1</h3>
+	<p>Оборачиваем всю страницу в блок, делаем его флекс-контейнером, внутрь вкладываем хэдер, мейн и футер. Родителю
+		задаём flex-direction: column чтобы блоки встали друг под другом, а не в ряд, и min-height: 100vh, чтобы он
+		занимал как минимум всю высоту экрана. Мейну задаём flex-grow: 1, и вуаля! Центральный блок страницы будет всегда
+		растягиваться на всё доступное свободное пространство. Из-за этого футер всегда будет прижиматься к нижнему краю
+		страницы. При этом, если контента в мейне будет больше чем на один экран, то он растянется и подстроится, ничего
+		не сломается.</p>
+
+	<h2 id="center-horizontal">Как отцентровать элемент по горизонтали (назвать хотя бы три способа)?</h2>
+	<h3>Способ 1</h3>
+	<ul>
+		<li>Родителя делаем флекс-контейнером.</li>
+		<li>Задаём ему выравнивание по основной оси по центру justify-content: center.</li>
+	</ul>
+
+	<h2 id="center-vertical">Как отцентровать элемент по вертикали (назвать хотя бы три способа)?</h2>
+	<h3>Способ 1</h3>
+	<ul>
+		<li>Родителя делаем флекс-контейнером.</li>
+		<li>Задаём ему выравнивание по поперечной оси по центру align-items: center.</li>
+	</ul>
+
+
+
+
+</body>
+
+</html>
