@@ -1188,6 +1188,33 @@
 		}
 		</code></pre>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		<h2 id="footer">Как прижать футер к низу страницы (назвать хотя бы два способа)?</h2>
 		<h3>Способ 1: CSS Flexbox</h3>
 		<p>Оборачиваем всю страницу в блок, делаем его флекс-контейнером, внутрь вкладываем хэдер, мейн и футер. Родителю
@@ -1234,12 +1261,79 @@ body {
 			боковые
 			отступы. Именно таким образом принято выравнивать контент сайта по центру окна браузера.</p>
 
+		<h3>Способ 3</h3>
+
+		<ul>
+			<li>внешнему блоку: text-align:center;</li>
+			<li>
+				<ul>внутреннему блоку:
+					<li>max-width: 100px;</li>
+					<li>display: inline-block (чтобы стало работать свойство text-align у родителя)</li>
+				</ul>
+			</li>
+		</ul>
+		<div style="border: 1px solid red;max-width: 300px;text-align:center;">
+			<div style="max-width: 100px;  background-color: brown;display: inline-block;">
+				Fuga, voluptatum dolores a tenetur, fugiat dignissimos ex, nihil libero sit assumenda debitis reiciendis
+				nobis
+			</div>
+		</div>
+
 		<h2 id="center-vertical">Как отцентровать элемент по вертикали (назвать хотя бы три способа)?</h2>
 		<h3>Способ 1</h3>
 		<ul>
 			<li>Родителя делаем флекс-контейнером.</li>
 			<li>Задаём ему выравнивание по поперечной оси по центру align-items: center.</li>
 		</ul>
+		<h3>Способ 2</h3>
+		<ul>Этот способ работает, только если известна высота внутреннего блока, т.к. ему нужно задавать отрицательный
+			верхний маржин, равный половине его высоты
+			<li>родителю задать position: relative</li>
+			<li>
+				<ul>внутреннему элементу:
+					<li>position: absolute</li>
+					<li>top: 50%</li>
+					<li>margin-top: минус половина высоты внутреннего элемента</li>
+				</ul>
+			</li>
+		</ul>
+		<div style="border: 1px solid red;position: relative;max-width: 300px;"> Lorem, ipsum dolor sit amet consectetur
+			adipisicing elit.
+			Fuga, voluptatum dolores a tenetur, fugiat dignissimos ex, nihil libero sit assumenda debitis reiciendis nobis
+			saepe delectus totam rerum animi temporibus harum.Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+			Fuga, voluptatum dolores a tenetur, fugiat dignissimos ex, nihil libero sit assumenda debitis reiciendis nobis
+			saepe delectus totam rerum animi temporibus harum.Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+			Fuga, voluptatum dolores a tenetur, fugiat dignissimos ex, nihil libero sit assumenda debitis reiciendis nobis
+			saepe delectus totam rerum animi temporibus harum.Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+			Fuga, voluptatum dolores a tenetur, fugiat dignissimos ex, nihil libero sit assumenda debitis reiciendis nobis
+			<div
+				style="width: 100px; height: 300px; background-color: brown;position: absolute;top: 50%;margin-top: -150px;">
+			</div>
+		</div>
+
+
+
+		<h3>Способ 3</h3>
+		<ul>Этот способ работает, только если во внешнем блоке нет текста, т.к. ему нужно задать line-leight, равный его
+			высоте. Соответственно, высота внешнего блока должна быть известна
+			<li>внешнему блоку: height: 300px;line-height: 300px;</li>
+			<li>
+				<ul>внутреннему блоку
+					<li>line-height: 1.25 (вернуть стандартный line-height)</li>
+					<li>display: inline-block (чтобы стало работать свойство vertical-align)</li>
+					<li>vertical-align: middle(для вертикального выравнивания)</li>
+				</ul>
+			</li>
+		</ul>
+		<div style="border: 1px solid red;max-width: 300px;height: 300px;line-height: 300px;">
+			<div
+				style="width: 100px;  background-color: brown;display: inline-block;vertical-align: middle;line-height: 1.25;">
+				Fuga, voluptatum dolores a tenetur, fugiat dignissimos ex, nihil libero sit assumenda debitis reiciendis
+				nobis
+			</div>
+		</div>
+
+
 
 	</main>
 

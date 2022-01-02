@@ -274,3 +274,7 @@ pre {
 	background-position-x: 40%;
 	background-repeat: no-repeat;
 }
+
+.position-vert {
+	background-image: url("./aksolotl.jpg");
+}
