@@ -25,7 +25,19 @@
         <a href="#data-types">Как и для каких целей используются типы данных, приведенные ниже?</a>
       </li>
       <li>
+        <a href="#interfaces">Для чего предназначены интерфейсы?</a>
+      </li>
+      <li>
+        <a href="#type-aliases">Что такое Type Aliases? Зачем нужны? Чем отличаются от интерфейсов?</a>
+      </li>
+
+      <li>
         <a href="#Union-intersection">Union и intersection типы</a>
+      </li>
+
+      <li>
+        <a href="#class-implements-extends">Может ли класс одновременно реализовывать набор интерфейсов и наследоваться
+          от другого класса?</a>
       </li>
 
     </ul>
@@ -138,7 +150,7 @@
     <h2 id="js-ts-typing">Какие виды типизации используются в JavaScript и TypeScript?</h2>
 
     <p><b>JavaScript:</b> Динамическая | Слабая | Неявная</p>
-    <p><b>TypeScript:</b> Статическая | Сильная | Явная | Структурная</p>
+    <p><b>TypeScript:</b> Статическая | Сильная | Явная | Структурная (???????????)</p>
 
 
     <h2 id="data-types">Как и для каких целей используются типы данных, приведенные ниже?</h2>
@@ -208,17 +220,277 @@
         здесь >></a> и <a
         href="https://stackoverflow.com/questions/38855908/naming-of-typescripts-union-and-intersection-types">здесь</a></b>
 
+    <h2 id="interfaces">Для чего предназначены интерфейсы?</h2>
+    <p> <b>Interface</b> — это синтаксическая конструкция, предназначенная для описания открытой (public) части объекта
+      без реализации (api).</p>
+    <p>Интерфейс предназначен для описания состояния и поведения объекта, класса, функционального выражения (какие
+      свойства и методы он содержит, какие типы они возвращают и т.д.).</p>
+    <p>Интерфейс объявляется с помощью ключевого слова interface, после которого указывается идентификатор (имя), за
+      которым следует заключенное в фигурные скобки тело содержащее описание.</p>
+    <pre><code>
+        interface Identifier {
+          // тело интерфейса 
+      }
+      </code></pre>
+
+
+    <h2 id="type-aliases">Что такое Type Aliases? Зачем нужны? Чем отличаются от интерфейсов?</h2>
+
+    <p>Псевдоним типа объявляется при помощи ключевого слова type, после которого следует идентификатор (имя)
+      псевдонима, а за ним идет оператор присваивания =, справа от которого находится тип, ассоциирующийся с
+      псевдонимом. Например:
+    </p>
+    <pre><code>
+    class Type {
+      method(): void {
+          type Alias = Type;
+      }
+  }
+    type Alias = Type;
+    </code></pre>
+    <p>Разберем разницу между интерфейсом и типом в TS. С выходом новых версий TS отличия между ними очень сильно
+      размываются и уже давно тип и интерфейс являются взаимозаменяемыми почти во всех случаях. Интерфейс и тип мы можем
+      использовать для описания свойств объекта:</p>
+
+
+    <pre><code>
+  interface UserA {
+    name: string;
+    age: number
+  }
+
+  type UserB = {
+    name: string;
+    age: number
+  }
+
+const user1: UserA  = {
+  name: 'Ivan',
+  age: 20
+}
+
+const user2: UserB  = {
+  name: 'Petr',
+  age: 30
+}
+
+</code></pre>
+
+
+    <p> В данном случае они будут полностью взаимозаменяемы. Разница только в синтаксисе. Интерфейс объявляется в
+      синтаксисе похожем на класс, а тип - в синтаксисе похожем на объект.</p>
+    <p>Также и тип и интерфейс можно использовать для описания поведения функции. Разницы никакой нет, сигнатура
+      осталась той же:</p>
+
+
+    <pre><code>
+  interface SumA {
+    (a: number, b: number): number
+  }
+
+  type SumB = (a: number, b: number) => number; 
+
+  const sum1: SumA = (a, b) => a + b;
+  const sum2: SumB = (a, b) => a + b;
+
+</code></pre>
+    <p> В старых версиях TS нельзя было наследоваться интерфейсом от типа, но в последних версиях это возможно (если это
+      объектный тип (object type) или пересечение объектных типов со статически известными членами):</p>
+
+    <pre><code>
+    type B = {
+    name: string;
+    }
+
+    interface A extends B {} // интерфейс наследуется от типа
+
+    const B: A = {
+    name: 'Lena';
+    }
+    </code></pre>
+
+
+    <p>Как видим, в большинстве случаев интерфейсы и типы являются взаимозаменяемыми</p>
+    <p>Различия:</p>
+    <p><b>1) с помощью типа можно сделать alias для какого-то примитивного значения:</b></p>
+    <pre><code>
+  type UniqueID = string;
+</code></pre>
+    <p>Далее чтобы писать более понятные типы, его можно использовать в других интерфейсах для большего понимания, что
+      происходит в системе:</p>
+    <pre><code>
+interface User {
+  id: UniqueID
+}
+</code></pre>
+    <p>Alias примитива можно сделать только с помощью типа. Но если это alias не для примитивного значения, а например
+      для массива, то можно использовать и интерфейс</p>
+    <pre><code>
+  type NamesA = string[];
+  interface NamesB { // Здесь определен интерфейс, который содержит сигнатуру массива. Эта сигнатура указывает, что объект, который реализует NamesB, может индексироваться с помощью чисел (объекта типа number). И, кроме того, данный объект должен хранить объекты типа string, то есть строки.
+    [key]: number: string 
+  }
+</code></pre>
+
+    <p><b>2) с помощью интерфейса невозможно описать тип кортежа (кортеж это массив, длина которого не изменяется)</b>
+    </p>
+
+    <pre><code>
+  type State = [number, (a: number) => void]
+  const tup = [123, (n) => {}]
+  </code></pre>
+    <p><b>3) мы можем создать тип, который будет частично имплементировать другой тип</b></p>
+
+    <pre><code>
+  type UserA = {
+    name: string;
+  }
+
+  type UserB = {
+    age: number
+  }
+
+  type C = A | B;
+
+const obj1: C = { // ok
+  name: 'S',
+}
+const obj2: C = { // ok
+  age: 10,
+}
+const obj3: C = { // надо проверить, может ли объект содержатьоба свойства
+  name: 'S',
+  age: 10,
+}
+</code></pre>
+    <p>Написать подобный интерфейс невозможно</p>
+
+    <pre><code>
+  interface D extends A | B {} // невалидный код
+  interface D extends C {} // невалидный код, т.к. экстендиться от типа, который содержит внутри себя union, невозможно
+  interface D extends A, B {} // ok, но тогда обязательными будут оба поля
+</code></pre>
+    <p><b>4) Типы, в отличие от интерфейсов, не могут быть объявлены несколько раз</b></p>
+    <pre><code>
+ type A = {
+   age: number
+ }
+
+ type A = { // ошибка
+  name: string
+}
+
+interface B = {
+  age: number
+}
+
+interface B = { // ok, произошел automerge, расширение интерфейса. Теперь объект с интерфейсом B должен иметь два поля
+ name: string
+}
+  
+const obj: B = {
+  age: 20,
+  name: 'Masha'
+}
+</code></pre>
+
+    <p><b>5) Псевдонимы типов нельзя использовать в таких операциях с типами времени выполнения как typeof и instanceof
+        - ??????? ЧТО ЭТО ЗНАЧИТ?????</b></p>
 
 
 
 
 
 
+    <h2 id="class-implements-extends">Может ли класс одновременно реализовывать набор интерфейсов и наследоваться от
+      другого класса?</h2>
+    <p>Может:</p>
 
+    <pre><code>
+        interface IAnimal {}
+        interface IOviparous {} 
+        
+        class Bird implements IAnimal, IOviparous {} 
+        
+        interface IFlyable {}
+        interface IPredatory {}
+        
+        class Eagle extends Bird implements IFlyable, IPredatory {} //надо проверить, может ли класс, наследующийся от другого класса, реализовывать более одного интерфейса (наверное может)
+      </code></pre>
+    <h2>От чего могут наследоваться интерфейсы? Какие накладывает ограничения наследование от класса?</h2>
+    <p>Наследование интерфейсов осуществляется с помощью ключевого слова extends, после которого через запятую идет один
+      или несколько идентификаторов расширяемых интерфейсов / типов / классов</p>
+    <p> <b>От других интерфейсов</b> </p>
+    <pre><code>
+      interface IIdentifiable {}
+      interface ILiving {}
+      
+      // интерфейсы IIdentifiable и ILiving вместе образуют логически связанную композицию, 
+      // которую можно выделить в интерфейс IAnimal
+      interface IAnimal extends IIdentifiable, ILiving {}
+    </code></pre>
 
+    <p><b>От типов</b></p>
+    <p> В старых версиях TS нельзя было наследоваться интерфейсом от типа, но в последних версиях это возможно (если это
+      объектный тип (object type) или пересечение объектных типов со статически известными членами):</p>
 
+    <pre><code>
+    type B = {
+    name: string;
+    }
 
+    interface A extends B {} // интерфейс наследуется от типа
 
+    const B: A = {
+    name: 'Lena';
+    }
+    </code></pre>
+    <pre><code>
+  
+    </code></pre>
+
+    <p><b>От классов</b></p>
+    <pre><code>
+      class Animal {
+        nickname: string;
+        age: number;
+    }
+    
+    interface IAnimal extends Animal {} //интерфейс наследуется от класса
+    
+    class Bird implements IAnimal {
+        nickname:string;
+        age: number;
+    }
+    
+    let bird: IAnimal = new Bird();
+    </code></pre>
+
+    <p>Интерфейс, полученный путем расширения типа класса, может быть реализован только самим этим классом или его
+      потомками, поскольку помимо публичных (public) также наследует закрытые (private) и защищенные (protected) члены.
+    </p>
+    <pre><code>
+    class Animal {
+      private uid: string;
+      protected maxAge: number;
+      public name: string;
+  }
+  
+    interface IAnimal extends Animal {}
+    
+    class Bird extends Animal implements IAnimal { // Ok
+        // private uid: string = ''; // Error, private
+        protected maxAge: number = 100; // Ok, protected
+        public name: string = 'bird'; // Ok,  public
+    }
+    
+    class Fish implements IAnimal { // Error
+        public name: string = 'fish';
+    }
+    
+    let bird: IAnimal = new Bird(); // Ok
+    let fish: IAnimal = new Fish(); // Error
+    </code></pre>
 
   </main>
 
