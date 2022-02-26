@@ -571,6 +571,68 @@ const obj: B = {
         про абстрактные классы и интерфейсы</a></b>
 
 
+
+
+    <h3 id="index-types">Для чего используются Index types?</h3>
+    <p>Сигнатура индекса в объявлении интерфейса позволяет указать любое количество свойств для разных объектов, которые
+      будут созданы в соответствии с данным интерфейсом.</p>
+    <p>Индексная сигнатура (index signature) состоит из двух частей. В первой части расположен имеющий собственную
+      аннотацию типа идентификатор привязки (binding identifier) заключенный в квадратные скобки []. Во второй части
+      расположена аннотация типа (type annotation) представляющего значение ассоциируемое с динамическим ключом.</p>
+
+    <p>В этом примере я использовал сигнатуру индекса для добавления информации о разных поселениях вокруг озер.
+      Поскольку у каждого озера будут свои поселения, использование дополнительных объектов не было бы хорошей идеей.
+    </p>
+
+    <pre><code>
+      interface Lakes {
+           name: string,
+           area: number,
+           length: number,
+           depth: number,
+           isFreshwater: boolean,
+           countries: string[],
+           frozen?: string[],
+           [extraProp: string]: any
+       }
+        
+       let fourthLake: Lakes = {
+           name: 'Tanganyika',
+           depth: 1470,
+           length: 676,
+           area: 32600,
+           isFreshwater: true,
+           countries: ['Burundi', 'Tanzania', 'Zambia', 'Congo'],
+           kigoma:'Tanzania', // индексированное поле
+           kalemie: 'Congo',// индексированное поле
+           bujumbura: 'Burundi'// индексированное поле
+       }
+    </code></pre>
+    <h3>Для чего нужен оператор keyof?</h3>
+    <p>В TypeScript существует возможность выводить все публичные, не статические,
+      принадлежащие типу ключи и на их основе создавать литеральный объединенный тип ( U
+      nion ). Для получения ключей нужно указать оператор keyof , после которого
+      указывается тип, чьи ключи будут объединены в тип объединение keyof Type .</p>
+
+
+    <pre><code>
+  
+      type AliasType = { f1: number, f2: string };
+      interface IInterfaceType {
+      f1: number;
+      f2: string;
+      }
+      class ClassType {
+      f1: number;
+      f2: string;
+      }
+      let v1: keyof AliasType; // v1: "f1" | "f2" - тип из ключей типа
+      let v2: keyof IInterfaceType; // v2: "f1" | "f2" - тип из ключей интерфейса
+      let v3: keyof ClassType; // v3: "f1" | "f2"  - тип из ключей класса
+      let v4: keyof number; // v4: "toString" | "toFixed" | "toExponential" | "toPrecision" | "valueOf" | "toLocaleString" - тип из ключей объекта
+
+    </code></pre>
+
     <h2 id="generics">Для чего нужны generics</h2>
     <p>Для того, чтобы разобраться в дженериках, давайте вспомним, как работают обычные типы в тайпскрипт.
       Простые типы, создаваемые в TS, работают по принципу констант или монолитов. Т.е. если у меня есть несколько
@@ -912,7 +974,7 @@ function getValue &ltT extends object&gt(obj: Т, prop){
   return obj[prop];
 }
 </code></pre>
-    <p>если передать первым параметром строку, то TS будет ругаться, говорить, что нельяз передать строку, т.к. нам
+    <p>если передать первым параметром строку, то TS будет ругаться, говорить, что нельзя передать строку, т.к. нам
       нужен object
       т.е. мы c помощью extends ограничиваем набор типов, которые могут быть переданы в эту функцию</p>
 
@@ -1030,6 +1092,210 @@ function format&ltT=string&gt(s?: T): T|undefined{
   }
 
 </code></pre>
+
+    <p> <i>Обобщение (Generics)</i> — это параметризированный тип позволяющий объявлять параметры типа, являющиеся
+      временной заменой конкретных типов, конкретизация которых будет выполнена в момент создания экземпляра.</p>
+    <p>Принадлежность параметра типа к конкретному типу данных устанавливается в момент передачи аргументов типа. При
+      этом конкретные типы данных указываются в паре угловых скобок, а количество конкретных типов должно
+      соответствовать количеству обязательных параметров типа.</p>
+    <h3>Какие есть встроенные обобщенные интерфейсы (built-in generic types)?</h3>
+
+    <h3>Как ограничить возможные значения переменной типа?</h3>
+    <p>Можно сделать дженерик подтипом другого типа ([переменная] extends [другой тип])</p>
+    <p>&ltUserInfo extends {salary: number}&gt - значит в типе, который мы подставим в переменную UserInfo обязательно
+      должно быть числовое поле salary
+      и могут быть еще какие-то другие поля
+    </p>
+
+
+    <p>когда значения внутри обобщенного типа должны обладать ограниченным набором признаков, применяется
+      расширение нашим типом другого типа или другого параметра типа. Используем ключевое слово <b>extends</b>
+    </p>
+    <pre><code>
+        &ltT extends object, U extends keyof T&gt
+      </code></pre>
+
+    <h3>Как ограничить возможные значения переменной типа значениями другой переменной типа?</h3>
+
+    <p>когда параметр типа расширяет другой тип, в
+      качестве аргумента типа можно будет передать только совместимый с ним тип.</p>
+    class T1 <T extends T2=T3> {}
+      <p>В момент, когда тип T расширяет другой тип, он получает признаки этого типа. Именно
+        поэтому для параметра типа, расширяющего другой тип, в качестве типа по умолчанию
+        можно указывать только совместимый с ним тип.</p>
+      <h3>Можно ли для переменной типа указать значение по умолчанию?</h3>
+      <p>Можно</p>
+      <pre><code>
+        function format&ltT=string&gt(s?: T): T|undefined{
+          return s;
+          }
+      </code></pre>
+      <p>Параметры, которым заданы значения по умолчанию, являются необязательными параметрами. Необязательные параметры
+        типа должны быть перечислены строго после обязательных. Если параметр типа указывается в качестве типа по
+        умолчанию, то ему самому должно быть задано значение по умолчанию, либо он должен расширять другой тип.</p>
+
+      <h3>Исправьте типизацию функции filterBy таким образом, чтобы она:</h3>
+      <p>a. первым аргументом принимала массив любых объектов;</p>
+      <p>b. вторым – имя поля, по которому производится фильтрация;</p>
+      <p>c. третьим – значение, которое должно содержать поле;</p>
+      <p>d. возвращала тип первого аргумента (исходного массива).</p>
+
+      <pre><code>
+          // исходная функция
+          function filterBy(input: Object[], propName: string, propValue: any): Object[] {
+            return input.filter(item => item[propName] === propValue);
+          }
+          // что должно получиться
+          interface IEmployee {
+            name: string;
+            age: number;
+            position: 'Programmer' | 'Accountant' | 'Designer';
+          }
+        
+          const employees: IEmployee[] = [
+            { name: 'Michael', age: 20, position: 'Programmer' },
+            { name: 'Jordan', age: 25, position: 'Designer' },
+            { name: 'Steve', age: 34, position: 'Accountant' },
+            { name: 'Tom', age: 19, position: 'Programmer' },
+            { name: 'Bob', age: 43, position: 'Programmer' },
+            { name: 'Michael', age: 19, position: 'Programmer' },
+            { name: 'Bob', age: 27, position: 'Designer' },
+          ];
+        
+        filterBy(employees, 'position', 'Programmer'); // вернёт IEmployee[]
+        filterBy(employees, 'surname', 'Cook'); // ошибка, тип IEmployee не содержит поле 'surname'
+        filterBy(employees, 'position', 'Tester'); // ошибка, поле 'position' не может содержать значение 'Tester',
+        </code></pre>
+      <p><b>Решение:</b></p>
+
+      <pre><code>
+  function filterBy<O extends object, U extends keyof O>
+    (input: O[], propName: U, propValue: O[U]): O[] {
+    return input.filter((item) => item[propName] === propValue);
+  }
+</code></pre>
+      <p>Не понятно, почему не работают вот эти варианты</p>
+      <pre><code>
+  //1
+  function filterBy<T extends Array&ltO&gt, O extends object, U extends keyof O>
+    (input: T, propName: U, propValue: O[U]): O[] {
+    return input.filter((item) => item[propName] === propValue);
+  }
+
+  //2
+  function filterBy<O extends Record&ltstring, unknown&gt, U extends keyof O>
+    (input: O[], propName: U, propValue: O[U]): O[] {
+    return input.filter((item) => item[propName] === propValue);
+  }
+</code></pre>
+      <h3>Типизируйте класс List так, чтобы:</h3>
+
+      <p>Конструктор класса принимал массив объектов с обязательным полем id;</p>
+      <p>Метод addItem позволял добавить только объект с типом аргумента конструктора;</p>
+      <p>Метод getList возвращал массив объектов с типом аргумента конструктора;</p>
+
+      <pre><code>
+        // Исходный класс
+
+        class List {
+          private list;
+      
+          constructor(list) {
+            this.list = list;
+          }
+      
+          addItem(item) {
+            this.list.push(item);
+          }
+      
+          getList() {
+            return this.list;
+          }
+        }
+        // Что должно получиться
+      
+        interface IGuest {
+          login: string;
+          password: string;
+        }
+      
+        const guests: IGuest[] = [
+          {
+            login: 'guest',
+            password: '123',
+          }, 
+          {
+            login: 'user',
+            password: '123',
+          }
+        ];
+      
+        const guestsList = new List&ltIGuest&gt(guests); // ошибка, в типе IGuest отсутствует поле id
+      
+        interface IUser {
+          id: number;
+          login: string;
+          password: string;
+        }
+      
+        const users: IUser[] = [
+          {
+            id: 1,
+            login: 'guest',
+            password: '123',
+          }, 
+          {
+            id: 2,
+            login: 'user',
+            password: '123',
+          }, 
+          {
+            id: 3,
+            login: 'author',
+            password: '123',
+          }
+        ];
+      
+        const usersList = new List&ltIUser&gt(users); // ok
+      
+        usersList.addItem({
+          login: 'guest',
+          password: '123',
+        }); // ошибка, отсутствует поле id
+      
+        usersList.addItem({
+          id: 3,
+          login: 'admin',
+        }); // ошибка, отсутствует поле password
+      
+        usersList.addItem({
+          id: 5,
+          login: 'guest',
+          password: '123',
+        }); // ok
+      
+        const usersArray = usersList.getList(); // IUser[];
+      </code></pre>
+
+      <p><b>Решение:</b></p>
+
+      <pre><code>
+        class List&ltT extends {id: unknown}&gt {
+          private list;
+        
+          constructor(list: T[]) {
+            this.list = list;
+          }
+        
+          addItem(item: T) {
+            this.list.push(item);
+          }
+        
+          getList() {
+            return this.list;
+          }
+        }
+      </code></pre>
 
   </main>
 
