@@ -1297,6 +1297,64 @@ function format&ltT=string&gt(s?: T): T|undefined{
         }
       </code></pre>
 
+      <h2>Для чего предназначены Conditional Types?</h2>
+      <p> <b>Условные типы (Conditional Types)</b> - это типы, способные принимать одно из двух значений, основываясь на
+        выражении,в котором устанавливается принадлежность к заданному типу данных. Условные типы семантически схожи с
+        тернарным оператором.</p>
+      <pre><code>
+  T extends U ? T1 : T2
+
+  type T0&ltT&gt = T extends number ? string : boolean;
+    let v0: T0&lt5&gt; // let v0: string
+    let v1: T0&lt'text'&gt; // let v1: boolean
+  </code></pre>
+
+      <h3>Как проявляется дистрибутивность в Conditional Types?</h3>
+      <p>Условные типы, которым, в качестве аргумента типа, устанавливается объединенный тип (Union Type), называются
+        распределительные условные типы (Distributive Conditional Types). Называются они так потому, что каждый тип,
+        составляющий объединенный тип, будет распределен таким образом, чтобы выражение условного типа было выполнено
+        для каждого. </p>
+
+
+      <pre><code>
+
+      type T0&ltT&gt =
+      T extends number ? "numeric" :
+      T extends string ? "text" :
+      "other";
+
+      let v0: T0&lt string | number &gt; // let v0: "numeric" | "text"
+      let v1: T0&lt string | boolean &gt; // let v1: "text" | "other"
+
+
+      // так видит разработчик
+
+      type T0&ltT&gt =
+      T extends number ? "numeric" :
+      T extends string ? "text" :
+      "other";
+
+      let v0: T0&lt string | number &gt; // let v0: "numeric" | "text"
+      let v1: T0&lt string | boolean &gt; // let v1: "text" | "other"
+
+      // так видит компилятор
+
+      type T0&ltT&gt =
+      // получаем первый тип составляющий union тип ( в данном случаи number ) и начинаем подставлять его на место T
+
+      number extends number ? "numeric" : // number соответствует number? Да! Определяем "numeric"
+      T extends string ? "text" :
+      "other"
+
+      // закончили определять один тип, приступаем к другому, в данном случаи string
+
+      string extends number ? "numeric" : // string соответствует number? Нет! Продолжаем.
+      string extends string ? "text" : // string соответствует string? Да! Определяем "text".
+      "other"
+
+      // Итого: условный тип T0&ltstring | number&gt определен, как "numeric" | "text"
+
+    </code></pre>
   </main>
 
 </body>
